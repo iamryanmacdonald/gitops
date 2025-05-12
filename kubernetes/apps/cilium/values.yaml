@@ -4,7 +4,7 @@ cgroup:
     enabled: false
   hostRoot: /sys/fs/cgroup
 envoy:
-  baseID: 100
+  enabled: false
 gatewayAPI:
   enableAlpn: true
   enableAppProtocol: true
