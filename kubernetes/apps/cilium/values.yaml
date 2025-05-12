@@ -12,6 +12,16 @@ gatewayAPI:
 ipam:
   mode: kubernetes
 kubeProxyReplacement: false
+operator:
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    trustCRDsExist: true
 securityContext:
   capabilities:
     ciliumAgent:
