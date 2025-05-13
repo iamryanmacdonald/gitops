@@ -6,3 +6,6 @@ grafana:
     dashboards:
       annotations:
         grafana_folder: kube-prometheus-stack
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
