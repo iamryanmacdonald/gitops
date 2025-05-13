@@ -8,6 +8,6 @@ configMapGenerator:
     files:
       - values.yaml=./values.yaml
 configurations:
-  - ./kustomizeconfig.yaml
+  - kustomizeconfig.yaml
 resources:
-  - ./helmrelease.yaml
+  - helmrelease.yaml
