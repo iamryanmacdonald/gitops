@@ -11,6 +11,14 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/default
         orgId: 1
         type: file
+dashboards:
+  default:
+    cilium-dashboard:
+      datasource: Prometheus
+      url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-agent/dashboards/cilium-dashboard.json
+    cilium-operator-dashboard:
+      datasource: Prometheus
+      url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-operator/dashboards/cilium-operator-dashboard.json
 datasources:
   datasources.yaml:
     apiVersion: 1
