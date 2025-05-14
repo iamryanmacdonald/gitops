@@ -1,0 +1,14 @@
+---
+controllers:
+  cloudflared:
+    containers:
+      app:
+        args: ["tunnel", "run"]
+        envFrom:
+          - secretRef:
+              name: cloudflared-token
+              namespace: network
+        image:
+          repository: docker.io/cloudflare/cloudflared
+          tag: 2025.4.2
+    strategy: RollingUpdate
