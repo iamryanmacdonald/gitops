@@ -17,9 +17,6 @@ resource "spot_spotnodepool" "main" {
     min_nodes = 2
     max_nodes = 4
   }
-  labels = {
-    "managed-by" = "terraform"
-  }
 }
 
 data "spot_kubeconfig" "homelab" {
@@ -30,5 +27,4 @@ resource "local_sensitive_file" "kubeconfig" {
   filename = "${path.module}/../../kubeconfig"
 
   content = data.spot_kubeconfig.homelab.raw
-  file_permission = 0400
 }

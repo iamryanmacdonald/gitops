@@ -6,7 +6,3 @@ terraform {
     }
   }
 }
-
-provider "spot" {
-  token = var.rackerlabs_spot_token
-}
