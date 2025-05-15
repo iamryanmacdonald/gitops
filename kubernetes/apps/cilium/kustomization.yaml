@@ -10,4 +10,6 @@ configMapGenerator:
 configurations:
   - kustomizeconfig.yaml
 resources:
+  - gateway-external.yaml
+  - gateway-internal.yaml
   - helmrelease.yaml
