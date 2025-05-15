@@ -13,10 +13,11 @@ resource "spot_spotnodepool" "main" {
   cloudspace_name = spot_cloudspace.homelab.cloudspace_name
   server_class    = "gp.vs1.large-syd"
 
-  autoscaling = {
-    min_nodes = 2
-    max_nodes = 4
-  }
+  # autoscaling = {
+  #   min_nodes = 2
+  #   max_nodes = 4
+  # }
+  desired_server_count = 2
 }
 
 data "spot_kubeconfig" "homelab" {
