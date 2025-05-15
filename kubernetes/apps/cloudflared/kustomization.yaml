@@ -10,4 +10,5 @@ configMapGenerator:
 configurations:
   - kustomizeconfig.yaml
 resources:
+  - dnsendpoint.yaml
   - helmrelease.yaml
