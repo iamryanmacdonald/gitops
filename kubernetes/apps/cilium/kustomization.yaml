@@ -13,3 +13,4 @@ resources:
   - gateway-external.yaml
   - gateway-internal.yaml
   - helmrelease.yaml
+  - networks.yaml
