@@ -11,9 +11,7 @@ gatewayAPI:
   enabled: true
 ipam:
   mode: kubernetes
-kubeProxyReplacement: true
-nodePort:
-  enabled: true
+kubeProxyReplacement: false
 operator:
   prometheus:
     enabled: true
