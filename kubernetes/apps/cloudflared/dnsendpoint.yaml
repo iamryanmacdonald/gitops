@@ -1,0 +1,12 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/externaldns.k8s.io/dnsendpoint_v1alpha1.json
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cloudflared
+  namespace: network
+spec:
+  endpoints:
+    - dnsName: homelab.themacdonald.house
+      recordType: CNAME
+      targets: ["754e7eb6-a33c-4167-9002-e5ee03a3f574.cfargotunnel.com"]
