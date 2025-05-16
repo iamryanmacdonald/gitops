@@ -9,8 +9,6 @@ gatewayAPI:
   enableAlpn: true
   enableAppProtocol: true
   enabled: true
-  hostNetwork:
-    enabled: true
 ipam:
   mode: kubernetes
 kubeProxyReplacement: false
