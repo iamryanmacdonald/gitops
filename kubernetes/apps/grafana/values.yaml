@@ -29,6 +29,8 @@ datasources:
         type: prometheus
         url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
 ingress:
+  annotations:
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
   enabled: true
   hosts:
     - grafana.themacdonald.house
