@@ -35,7 +35,7 @@ route:
     parentRefs:
       - name: external
         namespace: kube-system
-        sectionName: http
+        sectionName: https
 sidecar:
   dashboards:
     enabled: true
