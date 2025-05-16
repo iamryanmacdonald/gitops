@@ -9,6 +9,7 @@ configMapGenerator:
       - config.yaml=./config.yaml
 configurations:
   - kustomizeconfig.yaml
+namespace: network
 resources:
   - dnsendpoint.yaml
   - helmrelease.yaml
