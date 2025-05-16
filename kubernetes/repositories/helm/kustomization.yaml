@@ -5,4 +5,5 @@ kind: Kustomization
 resources:
   - cilium.yaml
   - external-dns.yaml
+  - ingress-nginx.yaml
   - prometheus-community.yaml
