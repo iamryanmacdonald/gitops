@@ -9,8 +9,10 @@ envoy:
     capabilities:
       envoy:
         - BPF
+        - NET_ADMIN
         - NET_BIND_SERVICE
         - PERFMON
+        - SYS_ADMIN
       keepCapNetBindService: true
 gatewayAPI:
   enableAlpn: true
