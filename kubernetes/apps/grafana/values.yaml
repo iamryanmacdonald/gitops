@@ -6,9 +6,17 @@ dashboardProviders:
       - disableDeletion: false
         editable: true
         folder: ''
-        name: 'default'
+        name: default
         options:
           path: /var/lib/grafana/dashboards/default
+        orgId: 1
+        type: file
+      - disableDeletion: false
+        editable: true
+        folder: nginx
+        name: nginx
+        options:
+          path: /var/lib/grafana/dashboards/nginx
         orgId: 1
         type: file
 dashboards:
@@ -19,6 +27,13 @@ dashboards:
     cilium-operator-dashboard:
       datasource: Prometheus
       url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-operator/dashboards/cilium-operator-dashboard.json
+  nginx:
+    nginx:
+      url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
+      datasource: Prometheus
+    request-handling-performance:
+      url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/request-handling-performance.json
+      datasource: Prometheus
 datasources:
   datasources.yaml:
     apiVersion: 1
