@@ -10,5 +10,4 @@ configMapGenerator:
 configurations:
   - kustomizeconfig.yaml
 resources:
-  - connector.yaml
   - helmrelease.yaml
