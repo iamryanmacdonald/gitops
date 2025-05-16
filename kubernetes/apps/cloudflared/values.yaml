@@ -33,7 +33,7 @@ controllers:
 persistence:
   config:
     name: cloudflared-config
-    type: ConfigMap
+    type: configMap
     globalMounts:
       - path: /etc/cloudflared/config.yaml
         readOnly: true
