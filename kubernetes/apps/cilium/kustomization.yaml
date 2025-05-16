@@ -9,6 +9,7 @@ configMapGenerator:
       - values.yaml=./values.yaml
 configurations:
   - kustomizeconfig.yaml
+namespace: kube-system
 resources:
   - gateway-external.yaml
   # - gateway-internal.yaml
