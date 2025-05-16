@@ -20,6 +20,5 @@ serviceMonitor:
 sources:
   - crd
   - gateway-httproute
-  - ingress
 txtOwnerId: default
 txtPrefix: k8s.
