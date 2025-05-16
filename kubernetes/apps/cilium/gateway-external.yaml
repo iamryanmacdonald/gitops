@@ -22,7 +22,7 @@ spec:
       protocol: HTTP
     - allowedRoutes:
         namespaces:
-          from: Same
+          from: All
       hostname: "*.themacdonald.house"
       name: https
       port: 443
