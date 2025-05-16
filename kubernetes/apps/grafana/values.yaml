@@ -50,6 +50,9 @@ ingress:
   hosts:
     - grafana.themacdonald.house
   ingressClassName: internal
+  tls:
+    - hosts:
+        - grafana.themacdonald.house
 sidecar:
   dashboards:
     enabled: true
