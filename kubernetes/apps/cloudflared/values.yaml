@@ -31,7 +31,7 @@ controllers:
           readiness: *probe
     strategy: RollingUpdate
 persistence:
-  config-file:
+  config:
     name: cloudflared-config
     type: ConfigMap
     globalMounts:
