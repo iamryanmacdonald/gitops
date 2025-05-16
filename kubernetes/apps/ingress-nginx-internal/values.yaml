@@ -11,6 +11,10 @@ controller:
     name: internal
     default: true
     controllerValue: k8s.io/internal
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
   service:
     annotations:
       tailscale.com/hostname: "internal"
