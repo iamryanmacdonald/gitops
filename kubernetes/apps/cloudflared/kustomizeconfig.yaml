@@ -5,3 +5,8 @@ nameReference:
     fieldSpecs:
       - kind: HelmRelease
         path: spec/values/persistence/config/name
+  - kind: ConfigMap
+    version: v1
+    fieldSpecs:
+      - kind: HelmRelease
+        path: spec/valuesFrom/name

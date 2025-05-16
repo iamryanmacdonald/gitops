@@ -7,6 +7,10 @@ configMapGenerator:
     namespace: network
     files:
       - config.yaml=./config.yaml
+  - name: cloudflared-values
+    namespace: network
+    files:
+      - values.yaml=./values.yaml
 configurations:
   - kustomizeconfig.yaml
 namespace: network
