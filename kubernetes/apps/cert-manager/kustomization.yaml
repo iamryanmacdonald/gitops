@@ -10,5 +10,6 @@ configurations:
   - kustomizeconfig.yaml
 namespace: cert-manager
 resources:
+  - certificate-tls.yaml
   - clusterissuer.yaml
   - helmrelease.yaml
