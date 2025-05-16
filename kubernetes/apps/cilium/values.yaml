@@ -5,10 +5,19 @@ cgroup:
   hostRoot: /sys/fs/cgroup
 envoy:
   baseID: 100
+  securityContext:
+    capabilities:
+      envoy:
+        - BPF
+        - NET_BIND_SERVICE
+        - PERFMON
+      keepCapNetBindService: true
 gatewayAPI:
   enableAlpn: true
   enableAppProtocol: true
   enabled: true
+  hostNetwork:
+    enabled: true
 ipam:
   mode: kubernetes
 kubeProxyReplacement: false
