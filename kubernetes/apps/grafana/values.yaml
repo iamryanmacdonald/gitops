@@ -28,14 +28,11 @@ datasources:
         name: Prometheus
         type: prometheus
         url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
-route:
-  main:
-    enabled: true
-    hostnames: ["grafana.themacdonald.house"]
-    parentRefs:
-      - name: external
-        namespace: kube-system
-        sectionName: https
+ingress:
+  enabled: true
+  hosts:
+    - grafana.themacdonald.house
+  ingressClassName: internal
 sidecar:
   dashboards:
     enabled: true
