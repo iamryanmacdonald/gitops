@@ -9,5 +9,6 @@ configMapGenerator:
       - values.yaml=./values.yaml
 configurations:
   - kustomizeconfig.yaml
+namespace: network
 resources:
   - helmrelease.yaml
