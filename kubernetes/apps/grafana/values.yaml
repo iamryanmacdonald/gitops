@@ -55,6 +55,7 @@ ingress:
   tls:
     - hosts:
         - grafana.themacdonald.house
+      secretName: themacdonald-house-production-tls
 sidecar:
   dashboards:
     enabled: true
