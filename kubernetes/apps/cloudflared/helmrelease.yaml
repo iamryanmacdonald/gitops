@@ -18,6 +18,58 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
-  valuesFrom:
-    - kind: ConfigMap
-      name: cloudflared-values
+  values:
+    controllers:
+      cloudflared:
+        containers:
+          app:
+            args:
+              - tunnel
+              - run
+            env:
+              NO_AUTOUPDATE: true
+              TUNNEL_METRICS: 0.0.0.0:8080
+              TUNNEL_LOGLEVEL: debug
+            envFrom:
+              - secretRef:
+                  name: cloudflared-token
+            image:
+              repository: docker.io/cloudflare/cloudflared
+              tag: 2025.4.2
+            probes:
+              liveness: &probe
+                custom: true
+                enabled: true
+                spec:
+                  failureThreshold: 3
+                  httpGet:
+                    path: /ready
+                    port: 8080
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+              readiness: *probe
+        strategy: RollingUpdate
+    persistence:
+      config:
+        name: cloudflared-config
+        type: configMap
+        globalMounts:
+          - path: /etc/cloudflared/config.yaml
+            readOnly: true
+            subPath: config.yaml
+    service:
+      cloudflared:
+        controller: cloudflared
+        ports:
+          http:
+            port: 8080
+    serviceMonitor:
+      cloudflared:
+        endpoints:
+          - interval: 1m
+            path: /metrics
+            port: http
+            scheme: http
+            scrapeTimeout: 10s
+        serviceName: cloudflared
