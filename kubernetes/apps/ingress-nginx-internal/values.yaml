@@ -1,9 +1,18 @@
 ---
 controller:
+  admissionWebhooks:
+    objectSelector:
+      matchExpressions:
+        - key: ingress-class
+          operator: In
+          values:
+            - internal
   ingressClassResource:
     name: internal
     default: true
     controllerValue: k8s.io/internal
   service:
+    annotations:
+      tailscale.com/hostname: "internal"
     loadBalancerClass: tailscale
 fullnameOverride: ingress-nginx-internal
