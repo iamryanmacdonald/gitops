@@ -1,2 +1,9 @@
 ---
+controller:
+  ingressClassResource:
+    name: internal
+    default: true
+    controllerValue: k8s.io/internal
+  service:
+    loadBalancerClass: tailscale
 fullnameOverride: ingress-nginx-internal
