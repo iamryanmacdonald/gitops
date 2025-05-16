@@ -30,6 +30,14 @@ controllers:
               timeoutSeconds: 1
           readiness: *probe
     strategy: RollingUpdate
+persistence:
+  config-file:
+    name: cloudflared-config
+    type: ConfigMap
+    globalMounts:
+      - path: /etc/cloudflared/config.yaml
+        readOnly: true
+        subPath: config.yaml
 service:
   cloudflared:
     controller: cloudflared
