@@ -45,17 +45,26 @@ datasources:
         url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
 env:
   GF_SERVER_ROOT_URL: https://grafana.themacdonald.house
-ingress:
-  annotations:
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
-  enabled: true
-  hosts:
-    - grafana.themacdonald.house
-  ingressClassName: internal
-  tls:
-    - hosts:
-        - grafana.themacdonald.house
-      secretName: themacdonald-house-production-tls
+# ingress:
+#   annotations:
+#     external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+#   enabled: true
+#   hosts:
+#     - grafana.themacdonald.house
+#   ingressClassName: internal
+#   tls:
+#     - hosts:
+#         - grafana.themacdonald.house
+#       secretName: themacdonald-house-production-tls
+route:
+  main:
+    enabled: true
+    hostnames:
+      - grafana.themacdonald.house
+    parentRefs:
+      - name: external
+        namespace: kube-system
+        sectionName: https
 sidecar:
   dashboards:
     enabled: true
