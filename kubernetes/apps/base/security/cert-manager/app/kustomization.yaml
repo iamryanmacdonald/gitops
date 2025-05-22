@@ -10,5 +10,5 @@ configurations:
   - kustomizeconfig.yaml
 namespace: security
 resources:
-  # - clusterissuer.yaml
+  - clusterissuer.yaml
   - helmrelease.yaml
