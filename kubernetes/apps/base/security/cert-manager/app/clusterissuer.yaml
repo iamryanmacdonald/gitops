@@ -14,7 +14,7 @@ spec:
           cloudflare:
             apiTokenSecretRef:
               key: cloudflare_api_token
-              name: cert-manager-cloudflare-secret
+              name: cert-manager-cloudflare
         selector:
           dnsZones:
             - themacdonald.house
