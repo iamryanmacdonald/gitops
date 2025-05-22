@@ -1,0 +1,20 @@
+---
+domainFilters:
+  - themacdonald.house
+env:
+  - name: &name EXTERNAL_DNS_PIHOLE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: *name
+        name: external-dns-pihole
+extraArgs:
+  - --pihole-server=http://192.168.0.53
+policy: sync
+provider: pihole
+serviceMonitor:
+  enabled: true
+sources:
+  - gateway-httproute
+  - service
+txtOwnerId: default
+txtPrefix: k8s.
