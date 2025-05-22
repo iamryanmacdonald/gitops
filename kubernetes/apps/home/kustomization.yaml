@@ -16,3 +16,5 @@ resources:
   - ../base/observability
   - ../base/observability/grafana/ks.yaml
   - ../base/observability/kube-prometheus-stack/ks.yaml
+  - ../base/security
+  - ../base/security/cert-manager/ks.yaml

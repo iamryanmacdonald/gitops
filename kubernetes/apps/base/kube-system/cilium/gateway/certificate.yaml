@@ -3,7 +3,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: themacdonald-house-production
+  name: themacdonald-house
 spec:
   commonName: themacdonald.house
   dnsNames:
@@ -12,4 +12,4 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-production
-  secretName: themacdonald-house-production-tls
+  secretName: themacdonald-house-tls
