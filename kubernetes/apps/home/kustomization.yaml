@@ -7,10 +7,10 @@ resources:
   - ../base/flux-system/addons/ks.yaml
   - ../base/kube-system
   - ../base/kube-system/cilium/ks.yaml
-  # - ../base/network
+  - ../base/network
   # - ../base/network/cert-manager/ks.yaml
   # - ../base/network/cloudflared/ks.yaml
-  # - ../base/network/external-dns/ks.yaml
+  - ../base/network/external-dns/ks.yaml
   # - ../base/network/ingress-nginx-internal/ks.yaml
   # - ../base/network/tailscale-operator/ks.yaml
   - ../base/observability
