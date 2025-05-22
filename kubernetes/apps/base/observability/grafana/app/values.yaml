@@ -24,11 +24,13 @@ dashboards:
       datasource: Prometheus
       url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-operator/dashboards/cilium-operator-dashboard.json
     cloudflared:
-      datasource: Prometheus
+      datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
       gnetId: 17457
       revision: 6
     external-dns:
-      datasource: null
+      datasource: Prometheus
       gnetId: 15038
       revision: 3
           
