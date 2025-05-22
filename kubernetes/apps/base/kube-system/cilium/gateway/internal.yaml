@@ -17,7 +17,7 @@ spec:
   listeners:
     - allowedRoutes:
         namespaces:
-          from: Same
+          from: All
       hostname: "*.themacdonald.house"
       name: http
       port: 80
