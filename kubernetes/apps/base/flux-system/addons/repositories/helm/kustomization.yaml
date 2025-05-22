@@ -6,7 +6,6 @@ namespace: flux-system
 resources:
   - cilium.yaml
   - external-dns.yaml
-  - ingress-nginx.yaml
   - jetstack.yaml
   - prometheus-community.yaml
   - tailscale.yaml

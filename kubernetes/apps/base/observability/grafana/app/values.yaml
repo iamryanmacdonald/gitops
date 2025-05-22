@@ -11,14 +11,6 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/default
         orgId: 1
         type: file
-      - disableDeletion: false
-        editable: true
-        folder: nginx
-        name: nginx
-        options:
-          path: /var/lib/grafana/dashboards/nginx
-        orgId: 1
-        type: file
 dashboards:
   default:
     cilium-dashboard:
@@ -27,13 +19,6 @@ dashboards:
     cilium-operator-dashboard:
       datasource: Prometheus
       url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-operator/dashboards/cilium-operator-dashboard.json
-  nginx:
-    nginx:
-      url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
-      datasource: Prometheus
-    request-handling-performance:
-      url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/request-handling-performance.json
-      datasource: Prometheus
 datasources:
   datasources.yaml:
     apiVersion: 1
@@ -45,17 +30,6 @@ datasources:
         url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
 env:
   GF_SERVER_ROOT_URL: https://grafana.themacdonald.house
-# ingress:
-#   annotations:
-#     external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
-#   enabled: true
-#   hosts:
-#     - grafana.themacdonald.house
-#   ingressClassName: internal
-#   tls:
-#     - hosts:
-#         - grafana.themacdonald.house
-#       secretName: themacdonald-house-production-tls
 route:
   main:
     enabled: true
