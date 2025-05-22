@@ -23,6 +23,11 @@ dashboards:
     cilium-operator-dashboard:
       datasource: Prometheus
       url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-operator/dashboards/cilium-operator-dashboard.json
+    external-dns:
+      datasource: Prometheus
+      gnetId: 15038
+      revision: 3
+          
 datasources:
   datasources.yaml:
     apiVersion: 1
