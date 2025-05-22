@@ -13,4 +13,3 @@ namespace: kube-system
 resources:
   - helmrelease.yaml
   - loadbalancer.yaml
-  - redirect.yaml

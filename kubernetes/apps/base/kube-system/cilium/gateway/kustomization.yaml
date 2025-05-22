@@ -6,3 +6,4 @@ namespace: kube-system
 resources:
   - external.yaml
   - internal.yaml
+  - redirect.yaml
