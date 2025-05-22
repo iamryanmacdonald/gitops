@@ -29,3 +29,7 @@ spec:
       name: https
       port: 443
       protocol: HTTPS
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: themacdonald-house-tls
