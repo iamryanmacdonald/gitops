@@ -18,6 +18,11 @@ spec:
     remediation:
       retries: -1
   interval: 1h
+  postRenderers:
+    - kustomize:
+        images:
+          - name: registry.k8s.io/external-dns/external-dns
+            newTag: v0.17.0
   upgrade:
     cleanupOnFail: true
     remediation:
