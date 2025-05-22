@@ -62,7 +62,7 @@ route:
     hostnames:
       - grafana.themacdonald.house
     parentRefs:
-      - name: main
+      - name: internal
         namespace: kube-system
         sectionName: https
 sidecar:
