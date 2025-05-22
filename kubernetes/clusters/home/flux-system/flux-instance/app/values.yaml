@@ -1,5 +1,9 @@
 ---
 instance:
+  cluster:
+    domain: "cluster.local"
+    multitenant: false
+    networkPolicy: false
   components:
     - helm-controller
     - kustomize-controller
