@@ -28,6 +28,11 @@ datasources:
     apiVersion: 1
     datasources:
       - access: proxy
+        name: Alertmanager
+        type: alertmanager
+        uid: alertmanager
+        url: http://kube-prometheus-stack-alertmanager.observability.svc.cluster.local:9093/
+      - access: proxy
         isDefault: true
         name: Prometheus
         type: prometheus
