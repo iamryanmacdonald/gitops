@@ -11,8 +11,7 @@ configurations:
   - kustomizeconfig.yaml
 namespace: kube-system
 resources:
-  - gateway-external.yaml
-  # - gateway-internal.yaml
+  - gateway.yaml
   - helmrelease.yaml
-  - networks.yaml
+  - loadbalancer.yaml
   - redirect.yaml
