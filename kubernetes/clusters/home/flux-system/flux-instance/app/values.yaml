@@ -1,0 +1,14 @@
+---
+instance:
+  components:
+    - helm-controller
+    - kustomize-controller
+    - notification-controller
+    - source-controller
+  distribution:
+    version: 2.5.1
+  sync:
+    kind: GitRepository
+    path: kubernetes/clusters/home
+    ref: "refs/heads/main"
+    url: "https://github.com/iamryanmacdonald/homelab.git"

@@ -1,5 +1,4 @@
 [env]
-CLUSTER = "spot"
 KUBE_CONFIG_PATH = "{{config_root}}/kubeconfig"
 KUBECONFIG = "{{config_root}}/kubeconfig"
 ROOT_DIR = "{{config_root}}"
