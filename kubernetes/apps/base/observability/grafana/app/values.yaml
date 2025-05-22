@@ -28,7 +28,9 @@ dashboards:
       gnetId: 17457
       revision: 6
     external-dns:
-      datasource: Prometheus
+      datasource:
+        name: DS_PROMETHEUS
+        value: Prometheus
       gnetId: 15038
       revision: 3
           
