@@ -31,6 +31,7 @@ datasources:
         isDefault: true
         name: Prometheus
         type: prometheus
+        uid: prometheus
         url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
 env:
   GF_SERVER_ROOT_URL: https://grafana.themacdonald.house
@@ -49,3 +50,5 @@ sidecar:
     folderAnnotation: grafana_folder
     provider:
       foldersFromFilesStructure: true
+  datasources:
+    enabled:  true
