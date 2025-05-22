@@ -13,6 +13,10 @@ dashboardProviders:
         type: file
 dashboards:
   default:
+    cert-manager:
+      datasource: Prometheus
+      gnetId: 20842
+      revision: 3
     cilium-dashboard:
       datasource: Prometheus
       url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-agent/dashboards/cilium-dashboard.json
