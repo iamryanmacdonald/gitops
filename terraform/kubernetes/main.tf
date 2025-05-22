@@ -6,7 +6,7 @@ data "kubernetes_namespace" "network" {
 
 resource "kubernetes_secret" "cloudflared-token" {
   metadata {
-    name = "cloudflared-token"
+    name      = "cloudflared-token"
     namespace = "network"
   }
 

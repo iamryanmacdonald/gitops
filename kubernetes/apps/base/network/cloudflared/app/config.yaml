@@ -1,9 +1,10 @@
 ---
-originRequest:
-  originServerName: homelab.themacdonald.house
 ingress:
   - hostname: themacdonald.house
     service: &svc https://cilium-gateway-external.kube-system.svc.cluster.local
   - hostname: "*.themacdonald.house"
     service: *svc
   - service: http_status:404
+originRequest:
+  http2Origin: true
+  originServerName: external.themacdonald.house

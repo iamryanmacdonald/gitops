@@ -8,10 +8,8 @@ module "kubernetes" {
   source = "./kubernetes"
 
   cloudflare_tunnel_token = module.cloudflare.tunnel_token
-
-  depends_on = [module.spot]
 }
 
-module "spot" {
-  source = "./spot"
-}
+# module "spot" {
+#   source = "./spot"
+# }

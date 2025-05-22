@@ -6,6 +6,6 @@ metadata:
   name: cloudflared
 spec:
   endpoints:
-    - dnsName: homelab.themacdonald.house
+    - dnsName: external.themacdonald.house
       recordType: CNAME
-      targets: ["754e7eb6-a33c-4167-9002-e5ee03a3f574.cfargotunnel.com"]
+      targets: ["dd2ed101-be34-4dce-b05e-f1a7ba896200.cfargotunnel.com"]

@@ -6,7 +6,7 @@ env:
     valueFrom:
       secretKeyRef:
         key: cloudflare_api_token
-        name: external-dns-secret
+        name: external-dns-cloudflare-secret
 extraArgs:
   - --cloudflare-dns-records-per-page=1000
   - --cloudflare-proxied
@@ -20,6 +20,5 @@ serviceMonitor:
 sources:
   - crd
   - gateway-httproute
-  - ingress
 txtOwnerId: default
 txtPrefix: k8s.
