@@ -8,7 +8,7 @@ configMapGenerator:
       - values.yaml=./values.yaml
 configurations:
   - kustomizeconfig.yaml
-namespace: cert-manager
+namespace: network
 resources:
   - certificate-tls.yaml
   - clusterissuer.yaml

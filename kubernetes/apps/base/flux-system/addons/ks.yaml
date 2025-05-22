@@ -3,15 +3,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster
+  name: addons-repositories
   namespace: flux-system
 spec:
-  interval: 10m
-  path: ./kubernetes/apps/spot
+  interval: 30m
+  path: ./kubernetes/apps/base/flux-system/addons/repositories
   prune: true
+  retryInterval: 1m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 30m
-  wait: false
+  timeout: 3m
+  wait: true
