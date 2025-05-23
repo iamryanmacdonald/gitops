@@ -6,8 +6,6 @@ cgroup:
 dashboards:
   enabled: true
 envoy:
-  log:
-    defaultLevel: trace
   prometheus:
     serviceMonitor:
       enabled: true
