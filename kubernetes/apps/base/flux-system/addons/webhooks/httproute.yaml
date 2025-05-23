@@ -12,3 +12,12 @@ spec:
     - name: external
       namespace: envoy-gateway-system
       sectionName: https
+  rules:
+    - backendRefs:
+        - name: webhook-receiver
+          namespace: flux-system
+          port: 80
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
