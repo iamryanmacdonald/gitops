@@ -52,6 +52,7 @@ datasources:
         uid: prometheus
         url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
 env:
+  GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
   GF_SERVER_ROOT_URL: https://grafana.themacdonald.house
 route:
   main:
@@ -61,7 +62,7 @@ route:
     parentRefs:
       - name: internal
         namespace: kube-system
-        sectionName: https
+        sectionName: http
 sidecar:
   dashboards:
     enabled: true
