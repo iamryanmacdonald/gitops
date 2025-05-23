@@ -1,4 +1,5 @@
 ---
+autoDirectNodeRoutes: false
 cgroup:
   autoMount:
     enabled: false
@@ -6,6 +7,8 @@ cgroup:
 dashboards:
   enabled: true
 envoy:
+  log:
+    defaultLevel: debug
   prometheus:
     serviceMonitor:
       enabled: true
