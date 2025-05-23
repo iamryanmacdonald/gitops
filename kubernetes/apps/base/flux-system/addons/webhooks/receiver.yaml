@@ -11,5 +11,5 @@ spec:
       name: flux-system
       namespace: flux-system
   secretRef:
-    name: webhook-token
+    name: github-webhook-token
   type: github
