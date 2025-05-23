@@ -19,10 +19,10 @@ dashboards:
       revision: 3
     cilium-dashboard:
       datasource: Prometheus
-      url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-agent/dashboards/cilium-dashboard.json
+      url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.4/install/kubernetes/cilium/files/cilium-agent/dashboards/cilium-dashboard.json
     cilium-operator-dashboard:
       datasource: Prometheus
-      url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.0/install/kubernetes/cilium/files/cilium-operator/dashboards/cilium-operator-dashboard.json
+      url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.4/install/kubernetes/cilium/files/cilium-operator/dashboards/cilium-operator-dashboard.json
     cloudflared:
       datasource:
         - name: DS_PROMETHEUS
@@ -33,6 +33,9 @@ dashboards:
       datasource: Prometheus
       gnetId: 15038
       revision: 3
+    hubble-dashboard:
+      datasource: Prometheus
+      url: https://raw.githubusercontent.com/cilium/cilium/refs/tags/v1.17.4/install/kubernetes/cilium/files/hubble/dashboards/hubble-dashboard.json   
 datasources:
   datasources.yaml:
     apiVersion: 1
