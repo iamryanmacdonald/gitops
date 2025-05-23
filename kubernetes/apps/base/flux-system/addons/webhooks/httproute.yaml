@@ -10,7 +10,7 @@ spec:
     - flux-webhook.themacdonald.house
   parentRefs:
     - name: external
-      namespace: envoy-gateway-system
+      namespace: network
       sectionName: https
   rules:
     - backendRefs:

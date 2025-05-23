@@ -3,11 +3,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: eg
-  namespace: envoy-gateway-system
+  name: envoy-gateway
+  namespace: network
 spec:
   interval: 30m
-  path: ./kubernetes/apps/base/envoy-gateway-system/eg/app
+  path: ./kubernetes/apps/base/network/envoy-gateway/app
   prune: true
   retryInterval: 1m
   sourceRef:
@@ -21,11 +21,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: eg-gateway
-  namespace: envoy-gateway-system
+  name: envoy-gateway-gateway
+  namespace: network
 spec:
   interval: 30m
-  path: ./kubernetes/apps/base/envoy-gateway-system/eg/gateway
+  path: ./kubernetes/apps/base/network/envoy-gateway/gateway
   prune: true
   retryInterval: 1m
   sourceRef:

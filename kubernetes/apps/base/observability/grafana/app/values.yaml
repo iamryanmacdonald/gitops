@@ -61,7 +61,7 @@ route:
       - grafana.themacdonald.house
     parentRefs:
       - name: internal
-        namespace: envoy-gateway-system
+        namespace: network
         sectionName: https
 sidecar:
   dashboards:

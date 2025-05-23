@@ -12,12 +12,4 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-production
-  privateKey:
-    algorithm: RSA
-    encoding: PKCS1
-    rotationPolicy: Always
-    size: 2048
   secretName: themacdonald-house-tls
-  usages:
-    - client auth
-    - server auth

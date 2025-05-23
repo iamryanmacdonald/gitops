@@ -16,5 +16,5 @@ prometheus:
         - prometheus.themacdonald.house
       parentRefs:
         - name: internal
-          namespace: envoy-gateway-system
+          namespace: network
           sectionName: https
