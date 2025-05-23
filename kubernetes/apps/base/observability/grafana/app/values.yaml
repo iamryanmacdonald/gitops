@@ -33,7 +33,6 @@ dashboards:
       datasource: Prometheus
       gnetId: 15038
       revision: 3
-          
 datasources:
   datasources.yaml:
     apiVersion: 1

@@ -5,6 +5,8 @@ cgroup:
   hostRoot: /sys/fs/cgroup
 dashboards:
   enabled: true
+endpointRoutes:
+  enabled: true
 envoy:
   prometheus:
     serviceMonitor:
@@ -13,8 +15,11 @@ envoy:
 gatewayAPI:
   enableAlpn: true
   enabled: true
+hubble:
+  enabled: true
 ipam:
   mode: kubernetes
+ipv4NativeRoutingCIDR: 10.42.0.0/24
 k8sServiceHost: 127.0.0.1
 k8sServicePort: 6443
 kubeProxyReplacement: true
@@ -34,6 +39,7 @@ prometheus:
   serviceMonitor:
     enabled: true
     trustCRDsExist: true
+routingMode: native
 securityContext:
   capabilities:
     ciliumAgent:
