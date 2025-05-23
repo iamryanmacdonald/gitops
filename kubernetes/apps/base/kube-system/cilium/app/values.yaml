@@ -1,5 +1,7 @@
 ---
 autoDirectNodeRoutes: true
+bpf:
+  hostLegacyRouting: true
 cgroup:
   autoMount:
     enabled: false
