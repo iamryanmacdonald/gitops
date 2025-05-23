@@ -1,0 +1,16 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/gateway.networking.k8s.io/gateway_v1.json
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: internal
+spec:
+  gatewayClassName: eg
+  listeners:
+    - allowedRoutes:
+        namespaces:
+          from: Same
+      hostname: "*.themacdonald.house"
+      name: http
+      port: 80
+      protocol: HTTP
