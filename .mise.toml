@@ -5,6 +5,7 @@ ROOT_DIR = "{{config_root}}"
 
 [tools]
 "aqua:cilium/cilium-cli" = "0.18.3"
+"aqua:cert-manager/cmctl" = "2.2.0"
 "aqua:cli/cli" = "2.72.0"
 "aqua:cloudflare/cloudflared" = "2025.4.2"
 "aqua:derailed/popeye" = "0.22.1"

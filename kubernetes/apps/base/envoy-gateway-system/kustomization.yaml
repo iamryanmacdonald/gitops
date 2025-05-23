@@ -2,10 +2,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: flux-system
+namespace: envoy-gateway-system
 resources:
-  - app-template.yaml
-  - flux-instance.yaml
-  - flux-operator.yaml
-  - gateway-helm.yaml
-  - grafana.yaml
+  - namespace.yaml

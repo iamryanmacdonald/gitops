@@ -1,7 +1,5 @@
 ---
 autoDirectNodeRoutes: true
-bpf:
-  hostLegacyRouting: true
 cgroup:
   autoMount:
     enabled: false
@@ -9,8 +7,6 @@ cgroup:
 dashboards:
   enabled: true
 envoy:
-  log:
-    defaultLevel: debug
   prometheus:
     serviceMonitor:
       enabled: true
@@ -39,9 +35,6 @@ hubble:
     prometheus:
       serviceMonitor:
         enabled: true
-    rollOutPods: true
-  ui:
-    enabled: true
     rollOutPods: true
 ipam:
   mode: kubernetes

@@ -1,0 +1,14 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+configMapGenerator:
+  - name: eg-values
+    namespace: envoy-gateway-system
+    files:
+      - values.yaml=./values.yaml
+configurations:
+  - kustomizeconfig.yaml
+namespace: envoy-gateway-system
+resources:
+  - helmrelease.yaml
