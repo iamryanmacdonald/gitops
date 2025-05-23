@@ -1,0 +1,15 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/receiver-notification-v1beta2.json
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Receiver
+metadata:
+  name: github-webhook
+  namespace: flux-system
+spec:
+  resources:
+    - kind: GitRepository
+      name: flux-system
+      namespace: flux-system
+  secretRef:
+    name: webhook-token
+  type: github
