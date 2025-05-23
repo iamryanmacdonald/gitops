@@ -6,6 +6,9 @@ metadata:
   name: github-webhook
   namespace: flux-system
 spec:
+  events:
+    - ping
+    - push
   resources:
     - kind: GitRepository
       name: flux-system
