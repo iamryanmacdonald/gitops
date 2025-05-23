@@ -61,7 +61,7 @@ route:
       - grafana.themacdonald.house
     parentRefs:
       - name: internal
-        namespace: kube-system
+        namespace: envoy-gateway-system
         sectionName: https
 sidecar:
   dashboards:

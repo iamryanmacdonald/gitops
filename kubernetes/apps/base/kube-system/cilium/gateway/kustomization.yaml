@@ -6,5 +6,5 @@ namespace: kube-system
 resources:
   - certificate.yaml
   - external.yaml
-  - internal.yaml
+  # - internal.yaml
   - redirect.yaml
