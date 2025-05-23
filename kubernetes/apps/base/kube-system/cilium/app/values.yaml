@@ -17,6 +17,19 @@ gatewayAPI:
   enabled: true
 hubble:
   enabled: true
+  metrics:
+    dashboards:
+      enabled: true
+    enabled:
+      - dns:query
+      - drop
+      - flow
+      - http
+      - icmp
+      - port-distribution
+      - tcp
+    serviceMonitor:
+      enabled: true
 ipam:
   mode: kubernetes
 ipv4NativeRoutingCIDR: 10.42.0.0/24
