@@ -1,5 +1,5 @@
 ---
-autoDirectNodeRoutes: false
+autoDirectNodeRoutes: true
 cgroup:
   autoMount:
     enabled: false
