@@ -24,12 +24,21 @@ hubble:
       - dns:query
       - drop
       - flow
-      - http
+      - httpV2
       - icmp
       - port-distribution
       - tcp
     serviceMonitor:
       enabled: true
+  relay:
+    enabled: true
+    prometheus:
+      serviceMonitor:
+        enabled: true
+    rollOutPods: true
+  ui:
+    enabled: true
+    rollOutPods: true
 ipam:
   mode: kubernetes
 ipv4NativeRoutingCIDR: 10.42.0.0/24
