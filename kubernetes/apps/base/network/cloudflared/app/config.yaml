@@ -1,7 +1,7 @@
 ---
 ingress:
   - hostname: themacdonald.house
-    service: &svc https://envoy-network-external-b1d9befd.network.svc.cluster.local
+    service: &svc https://envoy-network-external-b1d9befd.network.svc.cluster.local:443
   - hostname: "*.themacdonald.house"
     service: *svc
   - service: http_status:404
