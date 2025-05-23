@@ -5,8 +5,6 @@ cgroup:
   hostRoot: /sys/fs/cgroup
 dashboards:
   enabled: true
-endpointRoutes:
-  enabled: true
 envoy:
   log:
     defaultLevel: trace
