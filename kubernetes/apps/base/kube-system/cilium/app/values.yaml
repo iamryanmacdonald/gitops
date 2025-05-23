@@ -9,7 +9,7 @@ endpointRoutes:
   enabled: true
 envoy:
   log:
-    defaultLevel: debug
+    defaultLevel: trace
   prometheus:
     serviceMonitor:
       enabled: true
