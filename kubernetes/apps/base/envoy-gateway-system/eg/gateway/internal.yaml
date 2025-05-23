@@ -7,13 +7,11 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: &hostname internal.themacdonald.house
 spec:
-  addresses:
-    - type: IPAddress
-      value: 192.168.0.180
   gatewayClassName: eg
   infrastructure:
     annotations:
       external-dns.alpha.kubernetes.io/hostname: *hostname
+      io.cilium/lb-ipam-ips: ${CLUSTER_LB_ISTIO_INGRESS_GATEWAY}
   listeners:
     - allowedRoutes:
         namespaces:
