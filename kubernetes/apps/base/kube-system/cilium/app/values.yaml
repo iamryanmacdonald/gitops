@@ -8,6 +8,8 @@ dashboards:
 endpointRoutes:
   enabled: true
 envoy:
+  log:
+    defaultLevel: debug
   prometheus:
     serviceMonitor:
       enabled: true
