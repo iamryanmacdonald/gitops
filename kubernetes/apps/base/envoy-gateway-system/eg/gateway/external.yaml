@@ -3,15 +3,15 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: internal
+  name: external
   annotations:
-    external-dns.alpha.kubernetes.io/target: &hostname internal.themacdonald.house
+    external-dns.alpha.kubernetes.io/target: &hostname external.themacdonald.house
 spec:
   gatewayClassName: eg
   infrastructure:
     annotations:
       external-dns.alpha.kubernetes.io/hostname: *hostname
-      io.cilium/lb-ipam-ips: 192.168.0.180
+      io.cilium/lb-ipam-ips: 192.168.0.181
   listeners:
     - allowedRoutes:
         namespaces:
