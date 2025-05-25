@@ -2,6 +2,7 @@
 KUBE_CONFIG_PATH = "{{config_root}}/kubeconfig"
 KUBECONFIG = "{{config_root}}/kubeconfig"
 ROOT_DIR = "{{config_root}}"
+SOPS_AGE_KEY_FILE = "{{config_root}}/age.agekey"
 
 [tools]
 "aqua:cilium/cilium-cli" = "0.18.3"
@@ -9,6 +10,7 @@ ROOT_DIR = "{{config_root}}"
 "aqua:cli/cli" = "2.72.0"
 "aqua:cloudflare/cloudflared" = "2025.4.2"
 "aqua:derailed/popeye" = "0.22.1"
+"aqua:FiloSottile/age" = "1.2.1"
 "aqua:helm/helm" = "3.17.3"
 "aqua:helmfile/helmfile" = "1.0.0"
 "aqua:kubernetes/kubectl" = "1.33.0"

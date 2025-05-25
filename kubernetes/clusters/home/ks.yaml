@@ -6,6 +6,10 @@ metadata:
   name: cluster
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   interval: 10m
   path: ./kubernetes/apps/home
   prune: true

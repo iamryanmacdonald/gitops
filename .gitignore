@@ -17,3 +17,6 @@
 
 # Ignore Kubernetes configs
 kubeconfig
+
+# age encryption key
+age.agekey
