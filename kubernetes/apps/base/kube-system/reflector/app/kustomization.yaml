@@ -2,11 +2,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: flux-system
+namespace: kube-system
 resources:
-  - cilium.yaml
-  - emberstack.yaml
-  - external-dns.yaml
-  - jetstack.yaml
-  - prometheus-community.yaml
-  - tailscale.yaml
+  - helmrelease.yaml

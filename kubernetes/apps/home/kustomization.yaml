@@ -7,6 +7,7 @@ resources:
   - ../base/flux-system/addons/ks.yaml
   - ../base/kube-system
   - ../base/kube-system/cilium/ks.yaml
+  - ../base/kube-system/reflector/ks.yaml
   - ../base/network
   - ../base/network/cloudflared/ks.yaml
   - ../base/network/envoy-gateway/ks.yaml
