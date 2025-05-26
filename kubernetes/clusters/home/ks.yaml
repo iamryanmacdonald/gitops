@@ -40,17 +40,17 @@ spec:
       target:
         labelSelector: decryption.flux/enabled=true
     # Add post build substitution to specific children
-    - patch: |-
-        apiVersion: kustomize.toolkit.fluxcd.io/v1
-        kind: Kustomization
-        metadata:
-          name: not-used
-        spec:
-          postBuild:
-            substituteFrom:
-              - kind: ConfigMap
-                name: cluster-config
-              - kind: Secret
-                name: cluster-secrets
-      target:
-        labelSelector: substitution.flux/enabled=true
+    # - patch: |-
+    #     apiVersion: kustomize.toolkit.fluxcd.io/v1
+    #     kind: Kustomization
+    #     metadata:
+    #       name: not-used
+    #     spec:
+    #       postBuild:
+    #         substituteFrom:
+    #           - kind: ConfigMap
+    #             name: cluster-config
+    #           - kind: Secret
+    #             name: cluster-secrets
+    #   target:
+    #     labelSelector: substitution.flux/enabled=true
