@@ -23,6 +23,8 @@ kind: Kustomization
 metadata:
   name: addons-secrets
   namespace: flux-system
+  labels:
+    decryption.flux/enabled: true
 spec:
   interval: 30m
   path: ./kubernetes/apps/base/flux-system/addons/secrets
