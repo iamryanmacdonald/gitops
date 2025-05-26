@@ -6,8 +6,18 @@ metadata:
   name: grafana
   namespace: observability
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   interval: 30m
   path: ./kubernetes/apps/base/observability/grafana/app
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-config
+      - kind: Secret
+        name: cluster-secrets
   prune: true
   retryInterval: 1m
   sourceRef:
