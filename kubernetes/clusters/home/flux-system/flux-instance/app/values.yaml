@@ -11,29 +11,6 @@ instance:
     - source-controller
   distribution:
     version: 2.5.1
-  kustomize:
-    patches:
-      # Add postBuild substitution and decryption to flux-system
-      - patch: |
-          apiVersion: kustomize.toolkit.fluxcd.io/v1
-          kind: Kustomization
-          metadata:
-            name: flux-system
-            namespace: flux-system
-          spec:
-            decryption:
-              provider: sops
-              secretRef:
-                name: sops-age
-            postBuild:
-              substituteFrom:
-                - kind: ConfigMap
-                  name: cluster-config
-                - kind: Secret
-                  name: cluster-secrets
-        target:
-          kind: Kustomization
-          name: flux-system
   sync:
     kind: GitRepository
     path: kubernetes/clusters/home
