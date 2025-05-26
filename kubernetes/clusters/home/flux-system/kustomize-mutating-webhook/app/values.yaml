@@ -1,0 +1,7 @@
+---
+configMaps:
+  - create: false
+    name: cluster-config
+secrets:
+  - create: false
+    name: cluster-secrets

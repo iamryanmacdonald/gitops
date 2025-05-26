@@ -7,6 +7,7 @@ resources:
   - cilium.yaml
   - emberstack.yaml
   - external-dns.yaml
+  - fluxcd-kustomize-mutating-webhook.yaml
   - jetstack.yaml
   - prometheus-community.yaml
   - tailscale.yaml
