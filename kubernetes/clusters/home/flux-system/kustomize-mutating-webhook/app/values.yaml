@@ -2,6 +2,8 @@
 configMaps:
   - create: false
     name: cluster-config
+env:
+  LOG_LEVEL: debug
 secrets:
   - create: false
     name: cluster-secrets
