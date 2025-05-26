@@ -1,6 +1,6 @@
 ---
 adminPassword: ${CLUSTER_GRAFANA_ADMIN_PASSWORD}
-adminUser: ${CLUSTER_GRAFANA_ADMIN_USER}
+# adminUser: ${CLUSTER_GRAFANA_ADMIN_USER}
 dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
