@@ -5,8 +5,6 @@ kind: Kustomization
 metadata:
   name: external-dns-cloudflare
   namespace: network
-  labels:
-    substitution.flux/enabled: true
 spec:
   interval: 30m
   path: ./kubernetes/apps/base/network/external-dns/cloudflare
@@ -25,8 +23,6 @@ kind: Kustomization
 metadata:
   name: external-dns-pihole
   namespace: network
-  labels:
-    substitution.flux/enabled: true
 spec:
   interval: 30m
   path: ./kubernetes/apps/base/network/external-dns/pihole
