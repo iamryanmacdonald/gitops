@@ -7,3 +7,5 @@ env:
 secrets:
   - create: false
     name: cluster-secrets
+service:
+  headless: false
