@@ -23,6 +23,8 @@ kind: Kustomization
 metadata:
   name: envoy-gateway-gateway
   namespace: network
+  labels:
+    substitution.flux/enabled: true
 spec:
   interval: 30m
   path: ./kubernetes/apps/base/network/envoy-gateway/gateway
