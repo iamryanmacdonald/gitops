@@ -13,7 +13,7 @@ prometheus:
     main:
       enabled: true
       hostnames:
-        - prometheus.themacdonald.house
+        - 'prometheus.${CLUSTER_DOMAIN}'
       parentRefs:
         - name: internal
           namespace: network

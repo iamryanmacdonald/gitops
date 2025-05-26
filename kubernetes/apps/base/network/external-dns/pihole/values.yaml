@@ -1,6 +1,6 @@
 ---
 domainFilters:
-  - themacdonald.house
+  - ${CLUSTER_DOMAIN}
 env:
   - name: &name EXTERNAL_DNS_PIHOLE_PASSWORD
     valueFrom:

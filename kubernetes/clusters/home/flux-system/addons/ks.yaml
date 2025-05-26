@@ -3,21 +3,20 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster
+  name: addons-config
   namespace: flux-system
 spec:
-  interval: 10m
-  path: ./kubernetes/apps/home
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-config
-      - kind: Secret
-        name: cluster-secrets
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  interval: 30m
+  path: ./kubernetes/clusters/home/flux-system/addons/config
   prune: true
+  retryInterval: 1m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 30m
-  wait: false
+  timeout: 3m
+  wait: true

@@ -5,29 +5,29 @@ kind: Gateway
 metadata:
   name: external
   annotations:
-    external-dns.alpha.kubernetes.io/target: &hostname external.themacdonald.house
+    external-dns.alpha.kubernetes.io/target: &hostname 'external.${CLUSTER_DOMAIN}'
 spec:
   gatewayClassName: envoy-gateway
   infrastructure:
     annotations:
       external-dns.alpha.kubernetes.io/hostname: *hostname
-      io.cilium/lb-ipam-ips: 192.168.0.181
+      io.cilium/lb-ipam-ips: ${CLUSTER_LB_EXTERNAL_GATEWAY_IP}
   listeners:
     - allowedRoutes:
         namespaces:
           from: Same
-      hostname: "*.themacdonald.house"
+      hostname: '*.${CLUSTER_DOMAIN}'
       name: http
       port: 80
       protocol: HTTP
     - allowedRoutes:
         namespaces:
           from: All
-      hostname: "*.themacdonald.house"
+      hostname: '*.${CLUSTER_DOMAIN}'
       name: https
       port: 443
       protocol: HTTPS
       tls:
         certificateRefs:
           - kind: Secret
-            name: themacdonald-house-tls
+            name: '${CLUSTER_DOMAIN_SLUG}-tls'

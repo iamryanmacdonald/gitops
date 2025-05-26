@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   hostnames:
-    - flux-webhook.themacdonald.house
+    - 'flux-webhook.${CLUSTER_DOMAIN}'
   parentRefs:
     - name: external
       namespace: network

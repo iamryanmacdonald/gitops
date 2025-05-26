@@ -1,10 +1,10 @@
 ---
 ingress:
-  - hostname: themacdonald.house
+  - hostname: ${CLUSTER_DOMAIN}
     service: &svc https://envoy-network-external-b1d9befd.network.svc.cluster.local:443
-  - hostname: "*.themacdonald.house"
+  - hostname: '*.${CLUSTER_DOMAIN}'
     service: *svc
   - service: http_status:404
 originRequest:
   http2Origin: true
-  originServerName: external.themacdonald.house
+  originServerName: external.${CLUSTER_DOMAIN}

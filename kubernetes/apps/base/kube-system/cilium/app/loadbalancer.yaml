@@ -16,5 +16,5 @@ metadata:
 spec:
   allowFirstLastIPs: "Yes"
   blocks:
-    - start: 192.168.0.180
-      stop: 192.168.0.199
+    - start: ${CLUSTER_LB_IP_RANGE_START}
+      stop: ${CLUSTER_LB_IP_RANGE_STOP}

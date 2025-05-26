@@ -1,4 +1,6 @@
 ---
+adminPassword: ${CLUSTER_GRAFANA_ADMIN_PASSWORD}
+adminUser: ${CLUSTER_GRAFANA_ADMIN_USER}
 dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
@@ -53,12 +55,12 @@ datasources:
         url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
 env:
   GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
-  GF_SERVER_ROOT_URL: https://grafana.themacdonald.house
+  GF_SERVER_ROOT_URL: 'https://grafana.${CLUSTER_DOMAIN}'
 route:
   main:
     enabled: true
     hostnames:
-      - grafana.themacdonald.house
+      - 'grafana.${CLUSTER_DOMAIN}'
     parentRefs:
       - name: internal
         namespace: network

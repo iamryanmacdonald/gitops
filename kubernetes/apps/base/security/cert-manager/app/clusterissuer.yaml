@@ -17,4 +17,4 @@ spec:
               name: cert-manager-cloudflare
         selector:
           dnsZones:
-            - themacdonald.house
+            - ${CLUSTER_DOMAIN}
