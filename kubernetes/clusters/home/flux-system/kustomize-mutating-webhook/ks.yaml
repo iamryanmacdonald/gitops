@@ -5,6 +5,8 @@ kind: Kustomization
 metadata:
   name: kustomize-mutating-webhook
   namespace: flux-system
+  labels:
+    substitution.flux/enabled: true
 spec:
   interval: 30m
   path: ./kubernetes/clusters/home/flux-system/kustomize-mutating-webhook/app
