@@ -26,10 +26,6 @@ metadata:
 spec:
   interval: 30m
   path: ./kubernetes/apps/base/network/envoy-gateway/gateway
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-config
   prune: true
   retryInterval: 1m
   sourceRef:

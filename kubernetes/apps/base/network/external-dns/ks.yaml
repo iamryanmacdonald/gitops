@@ -8,10 +8,6 @@ metadata:
 spec:
   interval: 30m
   path: ./kubernetes/apps/base/network/external-dns/cloudflare
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-config
   prune: true
   retryInterval: 1m
   sourceRef:
@@ -30,10 +26,6 @@ metadata:
 spec:
   interval: 30m
   path: ./kubernetes/apps/base/network/external-dns/pihole
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-config
   prune: true
   retryInterval: 1m
   sourceRef:
