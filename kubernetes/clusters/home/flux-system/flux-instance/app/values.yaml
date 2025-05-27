@@ -13,7 +13,7 @@ instance:
     version: 2.5.1
   kustomize:
     patches:
-      # Add SOPS decryption to flux-system
+      # Add SOPS decryption and post build substitution to flux-system
       - patch: |
           apiVersion: v1
           kind: Kustomization
@@ -38,4 +38,4 @@ instance:
     kind: GitRepository
     path: kubernetes/clusters/home
     ref: "refs/heads/main"
-    url: "https://github.com/iamryanmacdonald/homelab.git"
+    url: "https://github.com/iamryanmacdonald/gitops.git"
