@@ -25,6 +25,12 @@ instance:
               provider: sops
               secretRef:
                 name: sops-age
+            postBuild:
+              substituteFrom:
+                - kind: ConfigMap
+                  name: cluster-config
+                - kind: Secret
+                  name: cluster-secrets
         target:
           kind: Kustomization
           name: flux-system
