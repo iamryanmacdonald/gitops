@@ -44,8 +44,21 @@ resource "oci_core_instance" "controlplane" {
     source_id   = oci_core_image.talos-arm64.id
     source_type = "image"
 
-    boot_volume_size_in_gbs = 200
+    boot_volume_size_in_gbs = 50
   }
+}
+
+resource "oci_core_volume" "zfs" {
+  compartment_id = var.oci_compartment_id
+
+  availability_domain = oci_core_instance.controlplane.availability_domain
+  size_in_gbs         = 150
+}
+
+resource "oci_core_volume_attachment" "zfs" {
+  attachment_type = "PARAVIRTUALIZED"
+  instance_id     = oci_core_instance.controlplane.id
+  volume_id       = oci_core_volume.zfs.id
 }
 
 resource "oci_network_load_balancer_backend" "talos" {
