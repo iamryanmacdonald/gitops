@@ -32,7 +32,7 @@ resource "oci_core_instance" "controlplane" {
   }
 
   lifecycle {
-    # ignore_changes = [metadata]
+    ignore_changes = [metadata]
   }
 
   shape_config {
