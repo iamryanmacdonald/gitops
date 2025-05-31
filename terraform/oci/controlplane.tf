@@ -32,7 +32,7 @@ resource "oci_core_instance" "controlplane" {
   }
 
   lifecycle {
-    ignore_changes = [metadata]
+    # ignore_changes = [metadata]
   }
 
   shape_config {
@@ -67,7 +67,10 @@ resource "oci_network_load_balancer_backend" "controlplane" {
 }
 
 resource "talos_machine_configuration_apply" "controlplane" {
-  depends_on = [oci_core_instance.controlplane]
+  depends_on = [
+    oci_network_load_balancer_backend.talos,
+    oci_network_load_balancer_backend.controlplane
+  ]
 
   client_configuration        = talos_machine_secrets.this.client_configuration
   machine_configuration_input = data.talos_machine_configuration.controlplane.machine_configuration
@@ -77,6 +80,8 @@ resource "talos_machine_configuration_apply" "controlplane" {
 }
 
 resource "talos_machine_bootstrap" "controlplane" {
+  depends_on = [talos_machine_configuration_apply.controlplane]
+
   client_configuration = talos_machine_secrets.this.client_configuration
   node                 = oci_core_instance.controlplane.private_ip
 
