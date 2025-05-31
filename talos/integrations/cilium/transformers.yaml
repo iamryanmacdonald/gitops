@@ -1,0 +1,21 @@
+---
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: labels
+fieldSpecs:
+  - create: true
+    path: metadata/labels
+labels:
+  app.kubernetes.io/managed-by: Helm
+---
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: annotations
+annotations:
+  meta.helm.sh/release-name: cilium
+  meta.helm.sh/release-namespace: kube-system
+fieldSpecs:
+  - create: true
+    path: metadata/annotations

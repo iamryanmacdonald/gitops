@@ -1,6 +1,6 @@
 [env]
-KUBE_CONFIG_PATH = "{{config_root}}/kubeconfig"
-KUBECONFIG = "{{config_root}}/kubeconfig"
+KUBE_CONFIG_PATH = "{{config_root}}/kubeconfig:{{config_root}}/talos/kubeconfig"
+KUBECONFIG = "{{config_root}}/kubeconfig:{{config_root}}/talos/kubeconfig"
 ROOT_DIR = "{{config_root}}"
 SOPS_AGE_KEY_FILE = "{{config_root}}/age.agekey"
 

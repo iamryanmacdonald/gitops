@@ -1,0 +1,29 @@
+cluster:
+  allowSchedulingOnControlPlanes: true
+  extraManifests:
+    - https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/tags/v0.17.0/config/crd/standard/dnsendpoint.yaml
+    - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/experimental-install.yaml
+    - https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.83.0/stripped-down-crds.yaml
+  network:
+    cni:
+      name: custom
+      urls:
+        - https://raw.githubusercontent.com/iamryanmacdonald/gitops/refs/heads/main/talos/integrations/cilium/cilium.yaml
+machine:
+  certSANs:
+    - ${lb_ip}
+  features:
+    kubernetesTalosAPIAccess:
+      allowedKubernetesNamespaces:
+        - kube-system
+      allowedRoles:
+        - os:reader
+      enabled: true
+  kernel:
+    modules:
+      - name: zfs
+  kubelet:
+    extraArgs:
+      cloud-provider: external
+  network:
+    hostname: ${hostname}
