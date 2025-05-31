@@ -1,0 +1,12 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/ocirepository-source-v1beta2.json
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: talos-cloud-controller-manager
+  namespace: flux-system
+spec:
+  interval: 1h
+  ref:
+    tag: 0.4.5
+  url: oci://ghcr.io/siderolabs/charts/talos-cloud-controller-manager

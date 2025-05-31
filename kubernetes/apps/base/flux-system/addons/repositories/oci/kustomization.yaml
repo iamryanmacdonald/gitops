@@ -9,3 +9,4 @@ resources:
   - flux-operator.yaml
   - gateway-helm.yaml
   - grafana.yaml
+  - talos-cloud-controller-manager.yaml
