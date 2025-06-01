@@ -1,0 +1,29 @@
+---
+domainFilters:
+  - ${CLUSTER_DOMAIN}
+env:
+  - name: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        key: access_key
+        name: external-dns-aws
+  - name: AWS_REGION
+    value: ap-southeast-2
+  - name: AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        key: secret_key
+        name: external-dns-aws
+extraArgs:
+  - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
+  - --crd-source-kind=DNSEndpoint
+  - --gateway-name=external
+policy: sync
+provider: aws
+serviceMonitor:
+  enabled: true
+sources:
+  - crd
+  - gateway-httproute
+txtOwnerId: default
+txtPrefix: k8s.
