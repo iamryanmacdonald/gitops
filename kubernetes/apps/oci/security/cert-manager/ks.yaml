@@ -9,7 +9,7 @@ metadata:
     decryption.flux/enabled: true
 spec:
   interval: 30m
-  path: ./kubernetes/apps/base/security/cert-manager/app
+  path: ./kubernetes/apps/oci/security/cert-manager/app
   prune: true
   retryInterval: 1m
   sourceRef:
