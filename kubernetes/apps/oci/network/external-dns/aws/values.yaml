@@ -14,16 +14,12 @@ env:
       secretKeyRef:
         key: secret_key
         name: external-dns-aws
-extraArgs:
-  - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
-  - --crd-source-kind=DNSEndpoint
-  - --gateway-name=external
 policy: sync
 provider: aws
 serviceMonitor:
   enabled: true
 sources:
-  - crd
   - gateway-httproute
+  - service
 txtOwnerId: default
 txtPrefix: k8s.
