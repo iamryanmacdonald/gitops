@@ -13,4 +13,5 @@ resources:
   # - ../base/network/envoy-gateway/ks.yaml
   - ./network/envoy-gateway/ks.yaml
   - ../base/security
-  - ../base/security/cert-manager/ks.yaml
+  # - ../base/security/cert-manager/ks.yaml
+  - ./security/cert-manager/ks.yaml
