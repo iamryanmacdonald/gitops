@@ -6,7 +6,8 @@ resources:
   - ../base/flux-system
   - ../base/flux-system/addons/ks.yaml
   - ../base/kube-system
-  - ../base/kube-system/cilium/ks.yaml
+  # - ../base/kube-system/cilium/ks.yaml
+  - ./kube-system/cilium/ks.yaml
   - ../base/kube-system/reflector/ks.yaml
   - ../base/kube-system/talos-cloud-controller-manager/ks.yaml
   - ../base/security
