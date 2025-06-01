@@ -1,13 +1,29 @@
 cluster:
   allowSchedulingOnControlPlanes: true
+  controllerManager:
+    extraArgs:
+      cloud-provider: external
   externalCloudProvider:
     enabled: true
     manifests:
-      - https://raw.githubusercontent.com/iamryanmacdonald/gitops/refs/heads/main/talos/integrations/talos-cloud-controller-manager/talos-cloud-controller-manager.yaml
+      - https://raw.githubusercontent.com/siderolabs/talos-cloud-controller-manager/${talos_ccm_version}/docs/deploy/cloud-controller-manager.yml
+      - https://github.com/oracle/oci-cloud-controller-manager/releases/download/${oci_ccm_version}/oci-cloud-controller-manager-rbac.yaml
+      - https://github.com/oracle/oci-cloud-controller-manager/releases/download/${oci_ccm_version}/oci-cloud-controller-manager.yaml
   extraManifests:
     - https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/tags/v0.17.0/config/crd/standard/dnsendpoint.yaml
     - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/experimental-install.yaml
     - https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.83.0/stripped-down-crds.yaml
+  inlineManifests:
+    - contents: |
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: oci-cloud-controller-manager
+          namespace: kube-system
+        data:
+          cloud-provider.yaml: ${cloud-provider-yaml}
+          config.ini: ${config-ini}
+      name: oci-cloud-controller-manager
   network:
     cni:
       name: custom

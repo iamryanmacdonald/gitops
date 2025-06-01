@@ -20,6 +20,7 @@ resource "oci_core_instance" "controlplane" {
 
   create_vnic_details {
     assign_public_ip = true
+    nsg_ids          = [oci_core_network_security_group.main.id]
     private_ip       = "10.0.0.10"
     subnet_id        = oci_core_subnet.kubernetes.id
   }
@@ -89,7 +90,23 @@ resource "talos_machine_configuration_apply" "controlplane" {
   machine_configuration_input = data.talos_machine_configuration.controlplane.machine_configuration
   node                        = oci_core_instance.controlplane.private_ip
 
+  config_patches = [
+    yamlencode({
+      machine = {
+        kubelet = {
+          extraArgs = {
+            "provider-id" = oci_core_instance.controlplane.id
+          }
+        }
+      }
+    })
+  ]
   endpoint = local.endpoints[0]
+}
+
+resource "local_file" "controlplane-01" {
+  content  = talos_machine_configuration_apply.controlplane.machine_configuration
+  filename = "${path.module}/../../talos/controlplane-01.yaml"
 }
 
 resource "talos_machine_bootstrap" "controlplane" {

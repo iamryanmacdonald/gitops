@@ -1,6 +1,23 @@
 locals {
-  endpoints = [for ipa in oci_network_load_balancer_network_load_balancer.controlplane-lb.ip_addresses : ipa.ip_address if ipa.is_public]
-  nodes     = [oci_core_instance.controlplane.private_ip]
+  cloud-provider-yaml = <<EOF
+auth:
+  useInstancePrincipals: true
+compartment: ${var.oci_compartment_id}
+loadBalancer:
+  securityListManagementMode: None
+  securityLists:
+    ${oci_core_subnet.kubernetes.id}: ${oci_core_security_list.main.id}
+  subnet1: ${oci_core_subnet.kubernetes.id}
+vcn: ${oci_core_vcn.main.id}
+  EOF
+  config-ini          = <<EOF
+[Global]
+compartment-id = ${var.oci_compartment_id}
+region = ${var.oci_region}
+use-instance-principals = true
+  EOF
+  endpoints           = [for ipa in oci_network_load_balancer_network_load_balancer.controlplane-lb.ip_addresses : ipa.ip_address if ipa.is_public]
+  nodes               = [oci_core_instance.controlplane.private_ip]
 }
 
 resource "talos_machine_secrets" "this" {
@@ -21,17 +38,17 @@ data "talos_machine_configuration" "controlplane" {
   machine_secrets  = talos_machine_secrets.this.machine_secrets
   machine_type     = "controlplane"
 
-  config_patches = [templatefile("${path.module}/../../talos/controlplane.yaml.tftpl", {
-    domain   = var.domain
-    hostname = "controlplane-01"
-    lb_ip    = local.endpoints[0]
-  })]
+  config_patches = [
+    templatefile("${path.module}/../../talos/controlplane.yaml.tftpl", {
+      cloud-provider-yaml = base64encode(local.cloud-provider-yaml)
+      config-ini          = base64encode(local.config-ini)
+      hostname            = "controlplane-01"
+      lb_ip               = local.endpoints[0]
+      oci_ccm_version     = var.oci_ccm_version
+      talos_ccm_version   = var.talos_ccm_version
+    })
+  ]
   talos_version = var.talos_version
-}
-
-resource "local_file" "controlplane-01" {
-  content  = data.talos_machine_configuration.controlplane.machine_configuration
-  filename = "${path.module}/../../talos/controlplane-01.yaml"
 }
 
 resource "local_file" "talconfig" {

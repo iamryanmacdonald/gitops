@@ -9,7 +9,6 @@ resources:
   # - ../base/kube-system/cilium/ks.yaml
   - ./kube-system/cilium/ks.yaml
   - ../base/kube-system/reflector/ks.yaml
-  - ../base/kube-system/talos-cloud-controller-manager/ks.yaml
   - ../base/network
   # - ../base/network/envoy-gateway/ks.yaml
   - ./network/envoy-gateway/ks.yaml

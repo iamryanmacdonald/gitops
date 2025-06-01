@@ -28,18 +28,9 @@ resource "oci_core_route_table" "main" {
   }
 }
 
-resource "oci_core_subnet" "kubernetes" {
-  cidr_block     = cidrsubnet(oci_core_vcn.main.cidr_block, 8, 0)
+resource "oci_core_security_list" "main" {
   compartment_id = var.oci_compartment_id
   vcn_id         = oci_core_vcn.main.id
-
-  display_name   = "kubernetes"
-  route_table_id = oci_core_route_table.main.id
-}
-
-resource "oci_core_default_security_list" "main" {
-  compartment_id             = var.oci_compartment_id
-  manage_default_resource_id = oci_core_vcn.main.default_security_list_id
 
   egress_security_rules {
     destination = "0.0.0.0/0"
@@ -54,4 +45,29 @@ resource "oci_core_default_security_list" "main" {
 
     stateless = false
   }
+}
+
+resource "oci_core_subnet" "kubernetes" {
+  cidr_block     = cidrsubnet(oci_core_vcn.main.cidr_block, 8, 0)
+  compartment_id = var.oci_compartment_id
+  vcn_id         = oci_core_vcn.main.id
+
+  display_name      = "kubernetes"
+  route_table_id    = oci_core_route_table.main.id
+  security_list_ids = [oci_core_security_list.main.id]
+}
+
+resource "oci_core_network_security_group" "main" {
+  compartment_id = var.oci_compartment_id
+  vcn_id         = oci_core_vcn.main.id
+}
+
+resource "oci_core_network_security_group_security_rule" "main" {
+  network_security_group_id = oci_core_network_security_group.main.id
+  direction                 = "EGRESS"
+  protocol                  = "all"
+
+  destination      = "0.0.0.0/0"
+  destination_type = "CIDR_BLOCK"
+  stateless        = false
 }

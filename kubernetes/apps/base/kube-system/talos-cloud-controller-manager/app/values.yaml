@@ -1,7 +1,0 @@
----
-daemonSet:
-  enabled: true
-enabledControllers:
-  - cloud-node
-  - node-csr-approval
-  - node-ipam-controller
