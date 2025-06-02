@@ -10,6 +10,7 @@ configurations:
   - kustomizeconfig.yaml
 namespace: security
 resources:
-  - clusterissuer.yaml
   - helmrelease.yaml
+  - letsencrypt.yaml
   - secret.sops.yaml
+  - selfsigned.yaml
