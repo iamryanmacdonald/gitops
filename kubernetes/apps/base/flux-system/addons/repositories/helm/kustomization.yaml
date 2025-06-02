@@ -9,5 +9,6 @@ resources:
   - external-dns.yaml
   - fluxcd-kustomize-mutating-webhook.yaml
   - jetstack.yaml
+  - metrics-server.yaml
   - prometheus-community.yaml
   - tailscale.yaml
