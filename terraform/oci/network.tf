@@ -45,6 +45,13 @@ resource "oci_core_security_list" "main" {
 
     stateless = false
   }
+
+  lifecycle {
+    ignore_changes = [
+      egress_security_rules,
+      ingress_security_rules
+    ]
+  }
 }
 
 resource "oci_core_subnet" "kubernetes" {

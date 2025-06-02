@@ -15,6 +15,7 @@ resource "oci_identity_policy" "ccm" {
   name           = "oci-ccm"
   statements = [
     "Allow dynamic-group ${oci_identity_dynamic_group.ccm.name} to manage load-balancers in compartment ${data.oci_identity_compartment.this.name}",
+    "Allow dynamic-group ${oci_identity_dynamic_group.ccm.name} to manage security-lists in compartment ${data.oci_identity_compartment.this.name}",
     "Allow dynamic-group ${oci_identity_dynamic_group.ccm.name} to read instance-family in compartment ${data.oci_identity_compartment.this.name}",
     "Allow dynamic-group ${oci_identity_dynamic_group.ccm.name} to use virtual-network-family in compartment ${data.oci_identity_compartment.this.name}"
   ]
