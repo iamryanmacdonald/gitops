@@ -16,7 +16,7 @@ spec:
   commonName: selfsigned-ca
   isCA: true
   issuerRef:
-    kind: Issuer
+    kind: ClusterIssuer
     name: selfsigned
   privateKey:
     algorithm: RSA
