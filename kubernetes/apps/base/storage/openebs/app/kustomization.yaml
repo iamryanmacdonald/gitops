@@ -11,3 +11,4 @@ configurations:
   - kustomizeconfig.yaml
 resources:
   - helmrelease.yaml
+  - storageclass.yaml
