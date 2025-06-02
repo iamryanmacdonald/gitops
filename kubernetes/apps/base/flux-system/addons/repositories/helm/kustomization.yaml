@@ -8,6 +8,7 @@ resources:
   - cloudnative-pg.yaml
   - emberstack.yaml
   - external-dns.yaml
+  - external-secrets.yaml
   - fluxcd-kustomize-mutating-webhook.yaml
   - jetstack.yaml
   - metrics-server.yaml

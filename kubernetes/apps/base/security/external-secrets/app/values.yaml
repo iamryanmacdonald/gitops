@@ -1,0 +1,8 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/external-secrets/external-secrets/refs/tags/v0.17.0/deploy/charts/external-secrets/values.schema.json
+bitwarden-sdk-server:
+  enabled: true
+grafanaDashboard:
+  enabled: true
+serviceMonitor:
+  enabled: true
