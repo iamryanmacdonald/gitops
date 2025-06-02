@@ -17,3 +17,5 @@ resources:
   - ../base/security
   # - ../base/security/cert-manager/ks.yaml
   - ./security/cert-manager/ks.yaml
+  - ../base/storage
+  - ../base/storage/openebs/ks.yaml

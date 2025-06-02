@@ -10,5 +10,6 @@ resources:
   - fluxcd-kustomize-mutating-webhook.yaml
   - jetstack.yaml
   - metrics-server.yaml
+  - openebs.yaml
   - prometheus-community.yaml
   - tailscale.yaml
