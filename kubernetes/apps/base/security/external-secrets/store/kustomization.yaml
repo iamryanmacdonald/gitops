@@ -2,12 +2,8 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-configMapGenerator:
-  - name: external-secrets-values
-    files:
-      - values.yaml=./values.yaml
-configurations:
-  - kustomizeconfig.yaml
 namespace: security
 resources:
-  - helmrelease.yaml
+  - certificate.yaml
+  - clustersecretstore.yaml
+  - externalsecret.yaml
