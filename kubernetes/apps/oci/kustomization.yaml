@@ -3,6 +3,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - ../base/database
+  - ../base/database/cloudnative-pg/ks.yaml
   - ../base/flux-system
   - ../base/flux-system/addons/ks.yaml
   - ../base/kube-system

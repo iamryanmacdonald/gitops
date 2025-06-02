@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - cilium.yaml
+  - cloudnative-pg.yaml
   - emberstack.yaml
   - external-dns.yaml
   - fluxcd-kustomize-mutating-webhook.yaml
