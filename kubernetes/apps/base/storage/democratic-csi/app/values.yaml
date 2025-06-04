@@ -15,6 +15,9 @@ controller:
     enabled: false
   externalSnapshotter:
     enabled: true
+    extraArgs:
+      - --leader-election=false
+      - --node-deployment=true
   strategy: node
 csiDriver:
   attachRequired: false
