@@ -5,9 +5,42 @@ helmDefaults:
   wait: true
   waitForJobs: true
 releases:
+  - chart: oci://quay.io/jetstack/charts/cert-manager
+    hooks:
+      - args:
+          - apply
+          - --namespace=security
+          - --server-side
+          - --field-manager=kustomize-controller
+          - --filename
+          - '{{ requiredEnv "ROOT_DIR" }}/kubernetes/apps/base/security/cert-manager/app/selfsigned.yaml'
+          - --wait=true
+        command: kubectl
+        events: [postsync]
+      - args:
+          - apply
+          - --namespace=security
+          - --server-side
+          - --field-manager=kustomize-controller
+          - --filename
+          - '{{ requiredEnv "ROOT_DIR" }}/kubernetes/apps/base/security/external-secrets/store/certificate.yaml'
+          - --wait=true
+        command: kubectl
+        events: [postsync]
+    name: cert-manager
+    namespace: security
+    values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/apps/base/security/cert-manager/app/values.yaml']
+    version: v1.17.2
+  - chart: oci://ghcr.io/external-secrets/charts/external-secrets
+    name: external-secrets
+    namespace: security
+    needs: ['security/cert-manager']
+    values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/apps/base/security/external-secrets/app/values.yaml']
+    version: 0.17.0
   - chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
     name: flux-operator
     namespace: flux-system
+    needs: ['security/external-secrets']
     values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/clusters/{{ requiredEnv "CLUSTER" }}/flux-system/flux-operator/app/values.yaml']
     version: 0.19.0
   - chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
@@ -16,20 +49,3 @@ releases:
     needs: ['flux-system/flux-operator']
     values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/clusters/{{ requiredEnv "CLUSTER" }}/flux-system/flux-instance/app/values.yaml']
     version: 0.19.0
-  - chart: jetstack/cert-manager
-    name: cert-manager
-    namespace: security
-    needs: ['flux-system/flux-instance']
-    values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/apps/base/security/cert-manager/app/values.yaml']
-    version: 1.17.2
-  - chart: fluxcd-kustomize-mutating-webhook/kustomize-mutating-webhook
-    name: kustomize-mutating-webhook
-    namespace: flux-system
-    needs: ['security/cert-manager']
-    values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/clusters/{{ requiredEnv "CLUSTER" }}/flux-system/kustomize-mutating-webhook/app/values.yaml']
-    version: 0.4.3
-repositories:
-  - name: fluxcd-kustomize-mutating-webhook
-    url: https://xunholy.github.io/fluxcd-kustomize-mutating-webhook
-  - name: jetstack
-    url: https://charts.jetstack.io

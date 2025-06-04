@@ -3,6 +3,10 @@ creation_rules:
   - age: age1uz35yjytjahj2nydce709njxklnd89ahchtn7xcpvcje3z7zeftqfqsqhu
     encrypted_regex: ^(data|stringData)$
     mac_only_encrypted: true
+    path_regex: bootstrap/.*/*.sops.ya?ml
+  - age: age1uz35yjytjahj2nydce709njxklnd89ahchtn7xcpvcje3z7zeftqfqsqhu
+    encrypted_regex: ^(data|stringData)$
+    mac_only_encrypted: true
     path_regex: kubernetes/.*/*.sops.ya?ml
 stores:
   yaml:
