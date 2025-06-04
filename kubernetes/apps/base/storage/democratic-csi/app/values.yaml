@@ -34,3 +34,9 @@ node:
         path: *storagePath
         type: DirectoryOrCreate
       name: local-hostpath
+storageClasses:
+  - allowVolumeExpansion: true
+    defaultClass: true
+    name: local-hostpath
+    reclaimPolicy: Delete
+    volumeBindingMode: WaitForFirstConsumer
