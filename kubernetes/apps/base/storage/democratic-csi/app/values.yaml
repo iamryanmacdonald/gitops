@@ -52,7 +52,7 @@ storageClasses:
     volumeBindingMode: WaitForFirstConsumer
 volumeSnapshotClasses:
   - annotations:
-      snapshot.storage.kubernetes.io/is-default-class: true
+      snapshot.storage.kubernetes.io/is-default-class: "true"
     deletionPolicy: Delete
     name: *name
     parameters: {}
