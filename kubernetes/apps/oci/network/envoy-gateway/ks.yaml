@@ -30,7 +30,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./kubernetes/apps/base/network/envoy-gateway/gateway
+  path: ./kubernetes/apps/oci/network/envoy-gateway/gateway
   prune: true
   retryInterval: 2m
   sourceRef:
