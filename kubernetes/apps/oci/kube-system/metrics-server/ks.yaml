@@ -3,16 +3,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: reflector
-  namespace: kube-system
+  name: metrics-server
 spec:
-  interval: 30m
-  path: ./kubernetes/apps/base/kube-system/reflector/app
+  interval: 1h
+  path: ./kubernetes/apps/base/kube-system/metrics-server/app
   prune: true
-  retryInterval: 1m
+  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 3m
-  wait: true
+  timeout: 5m
+  wait: false

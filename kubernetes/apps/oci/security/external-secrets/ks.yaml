@@ -6,16 +6,16 @@ metadata:
   name: external-secrets
   namespace: security
 spec:
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/base/security/external-secrets/app
   prune: true
-  retryInterval: 1m
+  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 3m
-  wait: true
+  timeout: 5m
+  wait: false
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -24,13 +24,13 @@ metadata:
   name: external-secrets-store
   namespace: security
 spec:
-  interval: 30m
+  interval: 1h
   path: ./kubernetes/apps/base/security/external-secrets/store
   prune: true
-  retryInterval: 1m
+  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 3m
-  wait: true
+  timeout: 5m
+  wait: false

@@ -11,10 +11,6 @@ envoy:
     serviceMonitor:
       enabled: true
   rollOutPods: true
-gatewayAPI:
-  enableAlpn: true
-  enabled: true
-  xffNumTrustedHops: 1
 hubble:
   enabled: true
   metrics:

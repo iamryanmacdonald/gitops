@@ -12,4 +12,3 @@ configurations:
 namespace: kube-system
 resources:
   - helmrelease.yaml
-  - loadbalancer.yaml

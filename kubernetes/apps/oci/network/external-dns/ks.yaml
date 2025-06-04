@@ -4,17 +4,16 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: external-dns-aws
-  namespace: network
   labels:
     decryption.flux/enabled: true
 spec:
-  interval: 30m
-  path: ./kubernetes/apps/oci/network/external-dns/aws
+  interval: 1h
+  path: ./kubernetes/apps/base/network/external-dns/aws
   prune: true
-  retryInterval: 1m
+  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 3m
-  wait: true
+  timeout: 5m
+  wait: false
