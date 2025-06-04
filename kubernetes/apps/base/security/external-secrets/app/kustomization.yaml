@@ -8,6 +8,5 @@ configMapGenerator:
       - values.yaml=./values.yaml
 configurations:
   - kustomizeconfig.yaml
-namespace: security
 resources:
   - helmrelease.yaml

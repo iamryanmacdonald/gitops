@@ -3,9 +3,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: external-secrets
-  namespace: security
+  name: &app external-secrets
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   interval: 1h
   path: ./kubernetes/apps/base/security/external-secrets/app
   prune: true
@@ -14,6 +16,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
+  targetNamespace: security
   timeout: 5m
   wait: false
 ---
@@ -21,9 +24,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: external-secrets-store
-  namespace: security
+  name: &app external-secrets-store
 spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   interval: 1h
   path: ./kubernetes/apps/base/security/external-secrets/store
   prune: true
@@ -32,5 +37,6 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
+  targetNamespace: security
   timeout: 5m
   wait: false

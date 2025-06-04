@@ -4,7 +4,6 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: cloudnative-pg
-  namespace: database
 spec:
   interval: 5m
   url: https://cloudnative-pg.github.io/charts
@@ -21,7 +20,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cloudnative-pg
-        namespace: database
       version: 0.24.0
   install:
     remediation:

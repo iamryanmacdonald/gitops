@@ -4,7 +4,6 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Receiver
 metadata:
   name: github-webhook
-  namespace: flux-system
 spec:
   events:
     - ping

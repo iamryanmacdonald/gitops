@@ -2,10 +2,8 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: kube-system
 configMapGenerator:
   - name: metrics-server-values
-    namespace: kube-system
     files:
       - values.yaml=./values.yaml
 configurations:

@@ -4,7 +4,6 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: external-dns-aws
-  namespace: network
 spec:
   interval: 5m
   url: https://kubernetes-sigs.github.io/external-dns
@@ -21,7 +20,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: external-dns
-        namespace: network
       version: 1.16.1
   install:
     remediation:
