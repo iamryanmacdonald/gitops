@@ -92,6 +92,13 @@ resource "talos_machine_configuration_apply" "controlplane" {
 
   config_patches = [
     yamlencode({
+      cluster = {
+        apiServer = {
+          admissionControl = {
+            "$patch" = "delete"
+          }
+        }
+      }
       machine = {
         kubelet = {
           extraArgs = {
