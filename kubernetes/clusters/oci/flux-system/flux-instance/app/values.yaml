@@ -1,7 +1,7 @@
 ---
 instance:
   cluster:
-    domain: "cluster.local"
+    domain: cluster.local
     multitenant: false
     networkPolicy: false
   components:
@@ -35,7 +35,9 @@ instance:
           kind: Kustomization
           name: flux-system
   sync:
+    interval: 1h
     kind: GitRepository
+    name: flux-system
     path: kubernetes/clusters/oci
-    ref: "refs/heads/main"
-    url: "https://github.com/iamryanmacdonald/gitops.git"
+    ref: refs/heads/main
+    url: https://github.com/iamryanmacdonald/gitops.git

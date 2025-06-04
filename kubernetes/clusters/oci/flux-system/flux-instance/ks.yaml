@@ -6,13 +6,17 @@ metadata:
   name: flux-instance
   namespace: flux-system
 spec:
-  interval: 30m
+  dependsOn:
+    - name: flux-operator
+      namespace: flux-system
+  interval: 1h
   path: ./kubernetes/clusters/oci/flux-system/flux-instance/app
   prune: true
-  retryInterval: 1m
+  retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 3m
-  wait: true
+  targetNamespace: flux-system
+  timeout: 5m
+  wait: false

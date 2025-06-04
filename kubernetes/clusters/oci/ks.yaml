@@ -23,8 +23,8 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  timeout: 30m
-  wait: false
+  timeout: 5m
+  wait: true
   patches:
     # Add SOPS decryption to specific children
     - patch: |-
