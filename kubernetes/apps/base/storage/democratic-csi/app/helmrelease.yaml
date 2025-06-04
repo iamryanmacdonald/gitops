@@ -4,6 +4,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
   name: democratic-csi
+  namespace: storage
 spec:
   interval: 5m
   layerSelector:
@@ -22,6 +23,7 @@ spec:
   chartRef:
     kind: OCIRepository
     name: democratic-csi
+    namespace: storage
   install:
     remediation:
       retries: -1
