@@ -20,6 +20,3 @@ kubeconfig
 
 # age encryption key
 age.agekey
-
-# temporarily hide files
-cluster-secrets.sops.yaml
