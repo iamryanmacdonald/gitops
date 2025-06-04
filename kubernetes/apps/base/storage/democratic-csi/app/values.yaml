@@ -1,0 +1,16 @@
+---
+controller:
+  enabled: true
+  externalAttacher:
+    enabled: false
+  externalProvisioner:
+    enabled: true
+  externalResizer:
+    enabled: false
+  externalSnapshotter:
+    enabled: true
+  strategy: node
+csiDriver:
+  fsGroupPolicy: file
+  name: local-hostpath.cluster.local
+  storageCapacity: true
