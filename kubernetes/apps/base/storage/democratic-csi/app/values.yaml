@@ -11,7 +11,7 @@ controller:
     enabled: true
   strategy: node
 csiDriver:
-  fsGroupPolicy: file
+  fsGroupPolicy: File
   name: local-hostpath.cluster.local
   storageCapacity: true
 driver:
