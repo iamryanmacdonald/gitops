@@ -1,19 +1,23 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kubernetes-sigs/external-dns/refs/heads/master/charts/external-dns/values.schema.json
 domainFilters:
   - ${CLUSTER_DOMAIN}
 env:
-  - name: AWS_ACCESS_KEY_ID
+  - name: &name AWS_ACCESS_KEY_ID
     valueFrom:
       secretKeyRef:
-        key: access_key
-        name: external-dns-aws
-  - name: AWS_REGION
-    value: ap-southeast-2
-  - name: AWS_SECRET_ACCESS_KEY
+        key: *name
+        name: &secret external-dns-aws
+  - name: &name AWS_REGION
     valueFrom:
       secretKeyRef:
-        key: secret_key
-        name: external-dns-aws
+        key: *name
+        name: *secret
+  - name: &name AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        key: *name
+        name: *secret
 policy: sync
 provider: aws
 serviceMonitor:
