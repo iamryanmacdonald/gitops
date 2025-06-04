@@ -47,6 +47,12 @@ node:
 storageClasses:
   - allowVolumeExpansion: true
     defaultClass: true
-    name: local-hostpath
+    name: &name local-hostpath
     reclaimPolicy: Delete
     volumeBindingMode: WaitForFirstConsumer
+volumeSnapshotClasses:
+  - annotations:
+      snapshot.storage.kubernetes.io/is-default-class: true
+    deletionPolicy: Delete
+    name: *name
+    parameters: {}
