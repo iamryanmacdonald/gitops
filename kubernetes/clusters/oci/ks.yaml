@@ -10,7 +10,7 @@ spec:
   patches:
     # Add postBuild substitutions to child Kustomizations
     - patch: |-
-        apiVersion: v1
+        apiVersion: kustomize.toolkit.fluxcd.io/v1
         kind: Kustomization
         metadata:
           name: not-used
@@ -21,8 +21,9 @@ spec:
                 name: cluster-secrets
                 optional: false
       target:
-        group: v1
+        group: kustomize.toolkit.fluxcd.io
         kind: Kustomization
+        version: v1
   path: ./kubernetes/apps/oci
   postBuild:
     substituteFrom:
