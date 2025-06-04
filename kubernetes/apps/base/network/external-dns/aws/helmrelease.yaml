@@ -19,7 +19,7 @@ spec:
       chart: external-dns
       sourceRef:
         kind: HelmRepository
-        name: external-dns
+        name: external-dns-aws
       version: 1.16.1
   install:
     remediation:
