@@ -5,6 +5,6 @@ kind: Kustomization
 components:
   - ../../../components/common
 namespace: database
-resources:
+resources: []
   # - namespace.yaml
-  - cloudnative-pg/ks.yaml
+  # - cloudnative-pg/ks.yaml
