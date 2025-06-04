@@ -14,3 +14,12 @@ csiDriver:
   fsGroupPolicy: file
   name: local-hostpath.cluster.local
   storageCapacity: true
+driver:
+  config:
+    driver: local-hostpath
+    local-hostpath:
+      controllerBasePath: /var/lib/csi-local-hostpath
+      dirPermissionsGroup: 0
+      dirPermissionsMode: "0770"
+      dirPermissionsUser: 0
+      shareBasePath: /var/lib/csi-local-hostpath
