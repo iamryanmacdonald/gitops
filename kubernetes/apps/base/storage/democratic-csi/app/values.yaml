@@ -18,8 +18,19 @@ driver:
   config:
     driver: local-hostpath
     local-hostpath:
-      controllerBasePath: /var/lib/csi-local-hostpath
+      controllerBasePath: &storagePath /var/mnt/extra
       dirPermissionsGroup: 0
       dirPermissionsMode: "0770"
       dirPermissionsUser: 0
-      shareBasePath: /var/lib/csi-local-hostpath
+      shareBasePath: *storagePath
+node:
+  driver:
+    extraVolumeMounts:
+      - mountPath: *storagePath
+        mountPropagation: Bidirectional
+        name: local-hostpath
+  extraVolumes:
+    - hostpath:
+        path: *storagePath
+        type: DirectoryOrCreate
+      name: local-hostpath
