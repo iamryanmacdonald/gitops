@@ -5,6 +5,12 @@ controller:
     enabled: false
   externalProvisioner:
     enabled: true
+    extraArgs:
+      - --capacity-ownerref-level=1
+      - --enable-capacity=true
+      - --leader-election=false
+      - --node-deployment=true
+      - --node-deployment-immediate-binding=false
   externalResizer:
     enabled: false
   externalSnapshotter:
