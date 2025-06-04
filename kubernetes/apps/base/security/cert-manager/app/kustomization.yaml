@@ -9,7 +9,7 @@ configMapGenerator:
 configurations:
   - kustomizeconfig.yaml
 resources:
+  - externalsecret.yaml
   - helmrelease.yaml
   - letsencrypt.yaml
-  - secret.sops.yaml
   - selfsigned.yaml
