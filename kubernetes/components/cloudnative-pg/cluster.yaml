@@ -10,3 +10,5 @@ spec:
   storage:
     size: ${CNPG_STORAGE_SIZE:=2Gi}
     storageClass: ${CNPG_STORAGE_STORAGECLASS:=local-hostpath}
+  superuserSecret:
+    name: ${APP}-cloudnative-pg
