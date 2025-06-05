@@ -6,6 +6,5 @@ components:
   - ../../../components/common
 namespace: kube-system
 resources:
-  # - namespace.yaml
   - cilium/ks.yaml
   - metrics-server/ks.yaml
