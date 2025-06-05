@@ -6,7 +6,7 @@ global:
 server:
   initContainers:
     - envFrom:
-        secretRef:
-          name: ${APP}
+        - secretRef:
+            name: ${APP}
       image: ghcr.io/home-operations/postgres-init:17.5
       name: postgres-init
