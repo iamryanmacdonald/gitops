@@ -1,5 +1,16 @@
 ---
 global:
+  env:
+    - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: ${APP}-cloudnative-pg
+    - name: AUTHENTIK_POSTGRESQL__USER
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: ${APP}-cloudnative-pg
   envFrom:
     - secretRef:
         name: authentik
