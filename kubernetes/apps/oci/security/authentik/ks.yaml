@@ -10,8 +10,11 @@ spec:
       app.kubernetes.io/name: *app
   components:
     - ../../../../../components/cloudnative-pg
+    - ../../../../../components/dragonfly
   dependsOn:
     - name: cloudnative-pg
+      namespace: database
+    - name: dragonfly-operator
       namespace: database
   interval: 1h
   path: ./kubernetes/apps/base/security/authentik/app
