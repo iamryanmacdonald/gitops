@@ -10,3 +10,12 @@ server:
             name: ${APP}
       image: ghcr.io/home-operations/postgres-init:17.5
       name: postgres-init
+  route:
+    main:
+      enabled: true
+      hostnames:
+        - 'auth.${CLUSTER_DOMAIN}'
+      parentRefs:
+        - name: external
+          namespace: network
+          sectionName: https
