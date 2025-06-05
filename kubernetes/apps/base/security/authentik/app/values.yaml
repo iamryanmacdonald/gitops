@@ -1,0 +1,5 @@
+---
+global:
+  envFrom:
+    - secretRef:
+        name: authentik
