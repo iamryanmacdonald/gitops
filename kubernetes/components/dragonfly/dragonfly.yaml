@@ -3,6 +3,6 @@
 apiVersion: dragonflydb.io/v1alpha1
 kind: Dragonfly
 metadata:
-  name: ${APP}
+  name: ${APP}-dragonfly
 spec:
   replicas: ${DRAGONFLY_REPLICAS:=1}
