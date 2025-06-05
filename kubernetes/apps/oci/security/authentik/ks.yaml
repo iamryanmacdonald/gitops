@@ -9,7 +9,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   components:
-    - ../../../../components/cloudnative-pg
+    - ../../../../../components/cloudnative-pg
   dependsOn:
     - name: cloudnative-pg
       namespace: database
