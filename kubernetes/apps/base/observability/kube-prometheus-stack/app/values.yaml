@@ -9,12 +9,3 @@ grafana:
 prometheus:
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
-  route:
-    main:
-      enabled: true
-      hostnames:
-        - 'prometheus.${CLUSTER_DOMAIN}'
-      parentRefs:
-        - name: internal
-          namespace: network
-          sectionName: https
