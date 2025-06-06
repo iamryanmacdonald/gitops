@@ -6,4 +6,3 @@ namespace: flux-system
 resources:
   - app-template.yaml
   - gateway-helm.yaml
-  - grafana.yaml

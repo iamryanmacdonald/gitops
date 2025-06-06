@@ -62,7 +62,7 @@ route:
     hostnames:
       - 'grafana.${CLUSTER_DOMAIN}'
     parentRefs:
-      - name: internal
+      - name: external
         namespace: network
         sectionName: https
 sidecar:
