@@ -60,6 +60,11 @@ grafana.ini:
   auth:
     oauth_auto_login: true
     signout_redirect_url: '${CLUSTER_AUTH_URL}/application/o/grafana/end-session/'
+  auth.anonymous:
+    enabled: true
+    hide_version: true
+    org_name: Main Org.
+    org_role: Viewer
   auth.generic_oauth:
     api_url: '${CLUSTER_AUTH_URL}/application/o/userinfo/'
     auth_url: '${CLUSTER_AUTH_URL}/application/o/authorize/'
