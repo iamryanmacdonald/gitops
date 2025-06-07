@@ -17,8 +17,10 @@ resource "authentik_provider_oauth2" "grafana" {
       url           = "https://grafana.${var.domains["main"]}/login/generic_oauth"
     }
   ]
-  client_secret     = module.bitwarden_secret_grafana.values["GRAFANA_CLIENT_SECRET"]
-  property_mappings = data.authentik_property_mapping_provider_scope.oauth2.ids
+  authentication_flow = authentik_flow.authentication.uuid
+  client_secret       = module.bitwarden_secret_grafana.values["GRAFANA_CLIENT_SECRET"]
+  property_mappings   = data.authentik_property_mapping_provider_scope.oauth2.ids
+  signing_key         = data.authentik_certificate_key_pair.generated.id
 }
 
 resource "authentik_application" "grafana" {
