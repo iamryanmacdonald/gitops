@@ -13,5 +13,5 @@ controllerServiceAccount:
   namespace: actions-runner-system
 githubConfigUrl: https://github.com/iamryanmacdonald/gitops
 githubConfigSecret: gha-runner-scale-set
-maxRunners: 1
-minRunners: 0
+maxRunners: 2
+minRunners: 1
