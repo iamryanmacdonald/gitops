@@ -9,7 +9,7 @@ jobs:
     steps:
       - id: changed-files
         name: Get changed files
-        uses: bjw-s-labs/action-changed-files@930cef8463348e168cab7235c47fe95a7a235f65
+        uses: bjw-s-labs/action-changed-files@432fa27b6d79462e5b9a9873c24b65f69b2a1ecf
         with:
           patterns: kubernetes/**/*
   test:
