@@ -3,20 +3,20 @@
 domainFilters:
   - ${CLUSTER_DOMAIN}
 env:
-  - name: &name AWS_ACCESS_KEY_ID
+  - name: AWS_ACCESS_KEY_ID
     valueFrom:
       secretKeyRef:
-        key: *name
+        key: AWS_ACCESS_KEY_ID
         name: &secret external-dns-aws
-  - name: &name AWS_REGION
+  - name: AWS_REGION
     valueFrom:
       secretKeyRef:
-        key: *name
+        key: AWS_REGION
         name: *secret
-  - name: &name AWS_SECRET_ACCESS_KEY
+  - name: AWS_SECRET_ACCESS_KEY
     valueFrom:
       secretKeyRef:
-        key: *name
+        key: AWS_SECRET_ACCESS_KEY
         name: *secret
 policy: sync
 provider: aws
