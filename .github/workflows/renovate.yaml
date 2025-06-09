@@ -1,0 +1,70 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+jobs:
+  renovate:
+    name: Renovate
+    runs-on: ubuntu-latest
+    steps:
+      - id: app-token
+        name: Generate Token
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+      
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          token: ${{ steps.app-token.outputs.token }}
+      
+      - env:
+          LOG_LEVEL: ${{ inputs.logLevel || "debug" }}
+          RENOVATE_AUTODISCOVER: true
+          RENOVATE_AUTODISCOVER_FILTER: ${{ github.repository }}
+          RENOVATE_DRY_RUN: ${{ inputs.dryRun }}
+          RENOVATE_GIT_AUTHOR: ${{ secrets.BOT_USERNAME }} <${{ secrets.BOT_USER_ID }}+${{ secrets.BOT_USERNAME }}[bot]@users.noreply.github.com>
+          RENOVATE_PLATFORM: github
+          RENOVATE_PLATFORM_COMMIT: true
+          RENOVATE_USERNAME: ${{ secrets.BOT_USERNAME }}[bot]
+        name: Renovate
+        uses: renovatebot/github-action@12f8ed8e6a936a00dc66b628d224488ac406b5e8
+        with:
+          configurationFile: .github/renovate.json5
+          renovate-version: ${{ inputs.version || "latest" }}
+          token: x-access-token:${{ steps.app-token.outputs.token }}
+name: Renovate
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/renovate.json5
+      - .github/workflows/renovate.yaml
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        default: false
+        description: Dry Run
+        required: true
+        type: boolean
+      logLevel:
+        default: info
+        description: Log Level
+        options:
+          - debug
+          - info
+          - warn
+          - error
+          - fatal
+        required: false
+        type: choice
+      version:
+        default: latest
+        description: Renovate Version
+        required: false
