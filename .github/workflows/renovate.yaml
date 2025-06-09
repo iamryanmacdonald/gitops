@@ -31,7 +31,7 @@ jobs:
           RENOVATE_PLATFORM_COMMIT: true
           RENOVATE_USERNAME: ${{ secrets.BOT_USERNAME }}[bot]
         name: Renovate
-        uses: renovatebot/github-action@12f8ed8e6a936a00dc66b628d224488ac406b5e8
+        uses: renovatebot/github-action@f3f82436a59e391dd579d1932aeb04f69c2eb5ce
         with:
           configurationFile: .github/renovate.json5
           renovate-version: ${{ inputs.version || 'latest' }}
