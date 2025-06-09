@@ -15,6 +15,3 @@ githubConfigUrl: https://github.com/iamryanmacdonald/gitops
 githubConfigSecret: gha-runner-scale-set
 maxRunners: 2
 minRunners: 1
-template:
-  spec:
-    serviceAccountName: actions-runner

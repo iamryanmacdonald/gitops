@@ -11,4 +11,3 @@ configurations:
 resources:
   - externalsecret.yaml
   - helmrelease.yaml
-  - serviceaccount.yaml
