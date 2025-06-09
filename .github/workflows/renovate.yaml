@@ -22,7 +22,7 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
       
       - env:
-          LOG_LEVEL: ${{ inputs.logLevel || "debug" }}
+          LOG_LEVEL: ${{ inputs.logLevel || 'debug' }}
           RENOVATE_AUTODISCOVER: true
           RENOVATE_AUTODISCOVER_FILTER: ${{ github.repository }}
           RENOVATE_DRY_RUN: ${{ inputs.dryRun }}
