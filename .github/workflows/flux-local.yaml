@@ -1,0 +1,46 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+jobs:
+  filter:
+    name: Flux Local - Filter
+    outputs:
+      changed-files: ${{ steps.changed-files.outputs.changed_files }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: changed-files
+        name: Get changed files
+        uses: bjw-s-labs/action-changed-files@930cef8463348e168cab7235c47fe95a7a235f65
+        with:
+          patterns: kubernetes/**/*
+  test:
+    if: ${{ needs.filter.outputs.changed-files != '[]' }}
+    name: Flux Local - Test
+    needs: filter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Run flux-local test
+        uses: docker://ghcr.io/allenporter/flux-local:v7.5.4
+        with:
+          args: >-
+            test
+            --all-namespaces
+            --enable-helm
+            --path /github/workspace/kubernetes/clusters/${{ matrix.cluster }}
+            --verbose
+    strategy:
+      matrix:
+        cluster: ["oci"]
+name: Flux Local
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
