@@ -1,0 +1,17 @@
+---
+containerMode:
+  kubernetesModeWorkVolumeClaim:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: local-hostpath
+  type: kubernetes
+controllerServiceAccount:
+  name: gha-runner-scale-set-controller
+  namespace: actions-runner-system
+githubConfigUrl: https://github.com/iamryanmacdonald/gitops
+githubConfigSecret: gha-runner-scale-set
+maxRunners: 1
+minRunners: 0
