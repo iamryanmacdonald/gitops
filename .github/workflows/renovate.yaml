@@ -10,13 +10,13 @@ jobs:
     steps:
       - id: app-token
         name: Generate Token
-        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
       
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
           token: ${{ steps.app-token.outputs.token }}
@@ -31,7 +31,7 @@ jobs:
           RENOVATE_PLATFORM_COMMIT: true
           RENOVATE_USERNAME: ${{ secrets.BOT_USERNAME }}[bot]
         name: Renovate
-        uses: renovatebot/github-action@12f8ed8e6a936a00dc66b628d224488ac406b5e8
+        uses: renovatebot/github-action@12f8ed8e6a936a00dc66b628d224488ac406b5e8 # v42.0.5
         with:
           configurationFile: .github/renovate.json5
           renovate-version: ${{ inputs.version || 'latest' }}
