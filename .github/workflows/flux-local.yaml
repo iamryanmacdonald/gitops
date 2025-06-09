@@ -28,7 +28,7 @@ jobs:
           args: >-
             diff
             --all-namespaces
-            --limimt-bytes 10000
+            --limit-bytes 10000
             --output-file diff.patch
             --path /github/workspace/pull/kubernetes/clusters/${{ matrix.cluster }}
             --path-orig /github/workspace/default/kubernetes/clusters/${{ matrix.cluster }}
