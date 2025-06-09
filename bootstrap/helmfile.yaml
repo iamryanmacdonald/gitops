@@ -48,4 +48,4 @@ releases:
     namespace: flux-system
     needs: ['flux-system/flux-operator']
     values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/clusters/{{ requiredEnv "CLUSTER" }}/flux-system/flux-instance/app/values.yaml']
-    version: 0.19.0
+    version: 0.22.0
