@@ -1,0 +1,37 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  packageRules: [
+    {
+      addLabels: ["renovate/container"],
+      matchDatasources: ["docker"],
+    },
+    {
+      addLabels: ["renovate/helm"],
+      matchDatasources: ["helm"],
+    },
+    {
+      addLabels: ["renovate/github-action"],
+      matchManagers: ["github-actions"],
+    },
+    {
+      addLabels: ["renovate/terraform"],
+      matchDatasources: ["terraform-module", "terraform-provider"],
+    },
+    {
+      labels: ["type/digest"],
+      matchUpdateTypes: ["digest"],
+    },
+    {
+      labels: ["type/major"],
+      matchUpdateTypes: ["major"],
+    },
+    {
+      labels: ["type/minor"],
+      matchUpdateTypes: ["minor"],
+    },
+    {
+      labels: ["type/patch"],
+      matchUpdateTypes: ["patch"],
+    },
+  ]
+}
