@@ -1,4 +1,20 @@
 ---
+# Areas
+- name: area/bootstrap
+  color: "0e8a16"
+- name: area/docs
+  color: "0e8a16"
+- name: area/github
+  color: "0e8a16"
+- name: area/kubernetes
+  color: "0e8a16"
+- name: area/terraform
+  color: "0e8a16"
+  # Clusters
+- name: cluster/home
+  color: "ffc300"
+- name: cluster/oci
+  color: "ffc300"
 # Renovate Types
 - name: renovate/container
   color: "027fa0"
