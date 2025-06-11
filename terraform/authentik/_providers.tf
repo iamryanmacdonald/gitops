@@ -1,6 +1,6 @@
 provider "authentik" {
   token = module.bitwarden_secret_authentik.values["AUTHENTIK_TOKEN"]
-  url   = var.authentik_url
+  url   = local.authentik_url
 }
 
 provider "bitwarden" {

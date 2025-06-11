@@ -14,7 +14,7 @@ resource "authentik_provider_oauth2" "grafana" {
   allowed_redirect_uris = [
     {
       matching_mode = "strict",
-      url           = "https://grafana.${var.domains["main"]}/login/generic_oauth"
+      url           = "https://grafana.${local.domains["main"]}/login/generic_oauth"
     }
   ]
   authentication_flow = authentik_flow.authentication.uuid
@@ -30,7 +30,7 @@ resource "authentik_application" "grafana" {
   group             = "Observability"
   meta_description  = "Grafana enables you to query, visualize, alert on, and explore your metrics, logs, and traces wherever they are stored."
   meta_icon         = "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/png/grafana.png"
-  meta_launch_url   = "https://grafana.${var.domains["main"]}"
+  meta_launch_url   = "https://grafana.${local.domains["main"]}"
   meta_publisher    = "Grafana Labs"
   protocol_provider = authentik_provider_oauth2.grafana.id
 }
