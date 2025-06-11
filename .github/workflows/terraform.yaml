@@ -69,10 +69,16 @@ jobs:
             -no-color
         working-directory: ${{ matrix.paths }}
       
-      - name: Terraform - plan
+      - env:
+          AWS_ACCESS_KEY_ID : ${{ vars.AWS_ACCESS_KEY_ID }}
+          AWS_ENDPOINT_URL_S3 : ${{ vars.AWS_ENDPOINT_URL_S3 }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        name: Terraform - plan
         run: |
           terraform plan \
+            -input=false
             -no-color
+            -out tf.plan
         working-directory: ${{ matrix.paths }}
     strategy:
       fail-fast: false
