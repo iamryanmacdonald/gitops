@@ -82,8 +82,16 @@ jobs:
           terraform plan \
             -input=false \
             -no-color \
-            -out tf.plan
+            -out .planfile
         working-directory: ${{ matrix.paths }}
+      
+      - name: Post PR comment
+        uses: borchero/terraform-plan-comment@434458316f8f24dd073cd2561c436cce41dc8f34 # v2.4.1
+        with:
+          header: "📝 Terraform Plan for ${{ matrix.paths }}"
+          planfile: .planfile
+          token: ${{ steps.app-token.outputs.token }}
+          working-directory: ${{ matrix.paths }}
     strategy:
       fail-fast: false
       matrix:
