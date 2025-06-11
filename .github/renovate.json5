@@ -2,9 +2,11 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
     "config:recommended",
+    "docker:enableMajor",
     "helpers:pinGitHubActionDigests",
     ":dependencyDashboard",
     ":disableRateLimiting",
+    "security:openssf-scorecard",
     ":semanticCommits",
     ":timezone(Australia/Melbourne)",
     "github>iamryanmacdonald/gitops//.renovate/autoMerge.json5",
@@ -32,4 +34,8 @@
       "/(^|/)kubernetes/.+\\.ya?ml$/",
     ],
   },
+  suppressNotifications: [
+    "prEditedNotification",
+    "prIgnoreNotification",
+  ]
 }

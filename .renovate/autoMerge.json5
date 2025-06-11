@@ -3,6 +3,14 @@
   packageRules: [
     {
       autoMerge: true,
+      autoMergeType: "pr",
+      description: "Auto-merge Helm Release",
+      ignoreTests: true,
+      matchDatasources: ["docker", "helm"],
+      matchUpdateTypes: ["patch"],
+    },
+    {
+      autoMerge: true,
       autoMergeType: "branch",
       description: "Auto-merge GitHub Actions",
       ignoreTests: true,
