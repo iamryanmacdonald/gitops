@@ -1,9 +1,9 @@
 data "oci_objectstorage_namespace" "ns" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
 }
 
 resource "oci_objectstorage_bucket" "images" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
   name           = "kubernetes-oci-images"
   namespace      = data.oci_objectstorage_namespace.ns.namespace
 
@@ -13,7 +13,7 @@ resource "oci_objectstorage_bucket" "images" {
 }
 
 resource "oci_core_image" "talos-arm64" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
 
   display_name = "talos-arm64"
   launch_mode  = "PARAVIRTUALIZED"

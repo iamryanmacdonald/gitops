@@ -2,7 +2,7 @@ locals {
   cloud-provider-yaml = <<EOF
 auth:
   useInstancePrincipals: true
-compartment: ${var.oci_compartment_id}
+compartment: ${local.oci_compartment_id}
 loadBalancer:
   securityListManagementMode: None
   securityLists:
@@ -12,8 +12,8 @@ vcn: ${oci_core_vcn.main.id}
   EOF
   config-ini          = <<EOF
 [Global]
-compartment-id = ${var.oci_compartment_id}
-region = ${var.oci_region}
+compartment-id = ${local.oci_compartment_id}
+region = ${local.oci_region}
 use-instance-principals = true
   EOF
   endpoints           = [for ipa in oci_network_load_balancer_network_load_balancer.controlplane-lb.ip_addresses : ipa.ip_address if ipa.is_public]
@@ -26,7 +26,7 @@ resource "talos_machine_secrets" "this" {
 
 data "talos_client_configuration" "this" {
   client_configuration = talos_machine_secrets.this.client_configuration
-  cluster_name         = var.cluster_name
+  cluster_name         = local.cluster_name
 
   endpoints = local.endpoints
   nodes     = local.nodes
@@ -34,7 +34,7 @@ data "talos_client_configuration" "this" {
 
 data "talos_machine_configuration" "controlplane" {
   cluster_endpoint = "https://${local.endpoints[0]}:6443"
-  cluster_name     = var.cluster_name
+  cluster_name     = local.cluster_name
   machine_secrets  = talos_machine_secrets.this.machine_secrets
   machine_type     = "controlplane"
 
@@ -52,6 +52,8 @@ data "talos_machine_configuration" "controlplane" {
 }
 
 resource "local_file" "talconfig" {
+  count = var.cicd ? 0 : 1
+
   content  = data.talos_client_configuration.this.talos_config
   filename = "${path.module}/../../talos/talconfig"
 }
@@ -75,6 +77,8 @@ resource "talos_cluster_kubeconfig" "this" {
 }
 
 resource "local_file" "kubeconfig" {
+  count = var.cicd ? 0 : 1
+
   content  = talos_cluster_kubeconfig.this.kubeconfig_raw
   filename = "${path.module}/../../talos/kubeconfig"
 }

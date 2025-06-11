@@ -1,10 +1,10 @@
 data "oci_identity_availability_domains" "main" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
 }
 
 resource "oci_core_instance" "controlplane" {
   availability_domain = data.oci_identity_availability_domains.main.availability_domains[0].name
-  compartment_id      = var.oci_compartment_id
+  compartment_id      = local.oci_compartment_id
   shape               = "VM.Standard.A1.Flex"
 
   display_name = "controlplane-01"
@@ -99,6 +99,8 @@ resource "talos_machine_configuration_apply" "controlplane" {
 }
 
 resource "local_file" "controlplane-01" {
+  count = var.cicd ? 0 : 1
+
   content  = talos_machine_configuration_apply.controlplane.machine_configuration
   filename = "${path.module}/../../talos/controlplane-01.yaml"
 }
