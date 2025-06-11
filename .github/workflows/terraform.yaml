@@ -73,6 +73,7 @@ jobs:
         run: |
           terraform plan \
             -no-color
+        working-directory: ${{ matrix.paths }}
     strategy:
       fail-fast: false
       matrix:
