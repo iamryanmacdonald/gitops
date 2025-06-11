@@ -60,7 +60,7 @@ jobs:
         name: Terraform - init
         run: |
           terraform init \
-            - no-color
+            -no-color
         working-directory: ${{ matrix.paths }}
       
       - name: Terraform - validate
