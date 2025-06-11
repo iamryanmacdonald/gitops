@@ -1,0 +1,89 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+jobs:
+  changed-files:
+    name: Terraform - Changed Files
+    outputs:
+      matrix: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      
+      - id: changed-files
+        name: Get changed files
+        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
+        with:
+          dir_names: true
+          dir_names_max_depth: 2
+          files: terraform/**
+          matrix: true
+      
+      - name: List changed files
+        run: echo ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+  plan:
+    name: Terraform - Plan
+    needs:
+      - changed-files
+    runs-on: ubuntu-latest
+    steps:
+      - id: app-token
+        name: Generate Token
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+      
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      
+      - name: Terraform - Install
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
+        with:
+          terraform_wrapper: false
+      
+      - name: Terraform - fmt
+        run: |
+          terraform fmt
+            -check
+        working-directory: ${{ matrix.paths }}
+
+      - env:
+          TERRAFORM_S3_ACCESS_KEY: ${{ secrets.TERRAFORM_S3_ACCESS_KEY }}
+          TERRAFORM_S3_ENDPOINTS: ${{ secrets.TERRAFORM_S3_ENDPOINTS }}
+          TERRAFORM_S3_SECRET_KEY: ${{ secrets.TERRAFORM_S3_SECRET_KEY }}
+        name: Terraform - init
+        run: |
+          terraform init \
+            -backend-config="access_key=$TERRAFORM_S3_ACCESS_KEY" \
+            -backend-config="endpoints=$TERRAFORM_S3_ENDPOINTS" \
+            -backend_config="secret_key=$TERRAFORM_S3_SECRET_KEY"
+        working-directory: ${{ matrix.paths }}
+      
+      - name: Terraform - validate
+        run: |
+          terraform validate
+            -no-color
+        working-directory: ${{ matrix.paths }}
+      
+      - name: Terraform - plan
+        run: |
+          terraform plan
+            -no-color
+    strategy:
+      fail-fast: false
+      matrix:
+        paths: ${{ fromJSON(needs.changed-files.outputs.matrix) }}
+      max-parallel: 4
+name: Terraform
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - terraform/**
+  workflow_dispatch:
