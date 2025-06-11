@@ -8,5 +8,5 @@ metadata:
 spec:
   interval: 1h
   ref:
-    tag: 3.7.3
+    tag: 4.0.1
   url: oci://ghcr.io/bjw-s-labs/helm/app-template
