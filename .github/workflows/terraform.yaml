@@ -48,7 +48,7 @@ jobs:
       
       - name: Terraform - fmt
         run: |
-          terraform fmt
+          terraform fmt \
             -check
         working-directory: ${{ matrix.paths }}
 
@@ -66,13 +66,13 @@ jobs:
       
       - name: Terraform - validate
         run: |
-          terraform validate
+          terraform validate \
             -no-color
         working-directory: ${{ matrix.paths }}
       
       - name: Terraform - plan
         run: |
-          terraform plan
+          terraform plan \
             -no-color
     strategy:
       fail-fast: false
