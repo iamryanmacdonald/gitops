@@ -10,6 +10,7 @@ instance:
     - notification-controller
     - source-controller
   distribution:
+    # renovate: datasource=github-releases depName=controlplaneio-fluxcd/distribution
     version: 2.5.1
   sync:
     interval: 1h
