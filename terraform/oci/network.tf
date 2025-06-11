@@ -1,5 +1,5 @@
 resource "oci_core_vcn" "main" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
 
   cidr_blocks    = ["10.0.0.0/16"]
   display_name   = "main"
@@ -8,14 +8,14 @@ resource "oci_core_vcn" "main" {
 }
 
 resource "oci_core_internet_gateway" "main" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
   vcn_id         = oci_core_vcn.main.id
 
   enabled = true
 }
 
 resource "oci_core_route_table" "main" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
   vcn_id         = oci_core_vcn.main.id
 
   display_name = "kubernetes"
@@ -29,7 +29,7 @@ resource "oci_core_route_table" "main" {
 }
 
 resource "oci_core_security_list" "main" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
   vcn_id         = oci_core_vcn.main.id
 
   egress_security_rules {
@@ -56,7 +56,7 @@ resource "oci_core_security_list" "main" {
 
 resource "oci_core_subnet" "kubernetes" {
   cidr_block     = cidrsubnet(oci_core_vcn.main.cidr_block, 8, 0)
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
   vcn_id         = oci_core_vcn.main.id
 
   display_name      = "kubernetes"
@@ -65,7 +65,7 @@ resource "oci_core_subnet" "kubernetes" {
 }
 
 resource "oci_core_network_security_group" "main" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
   vcn_id         = oci_core_vcn.main.id
 }
 

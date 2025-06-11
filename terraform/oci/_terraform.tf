@@ -11,6 +11,10 @@ terraform {
     use_path_style              = true
   }
   required_providers {
+    bitwarden = {
+      source  = "maxlaverse/bitwarden"
+      version = "0.13.6"
+    }
     oci = {
       source  = "oracle/oci"
       version = "7.4.0"

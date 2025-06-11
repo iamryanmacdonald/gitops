@@ -1,5 +1,5 @@
 resource "oci_network_load_balancer_network_load_balancer" "controlplane-lb" {
-  compartment_id = var.oci_compartment_id
+  compartment_id = local.oci_compartment_id
   display_name   = "controlplane-lb"
   subnet_id      = oci_core_subnet.kubernetes.id
 

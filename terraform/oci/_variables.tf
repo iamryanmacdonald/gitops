@@ -1,4 +1,8 @@
-variable "cluster_name" {
+variable "bitwarden_access_token" {
+  type = string
+}
+
+variable "bitwarden_organization_id" {
   type = string
 }
 
@@ -7,23 +11,12 @@ variable "oci_ccm_version" {
   type    = string
 }
 
-variable "oci_compartment_id" {
-  type = string
-}
-
-variable "oci_region" {
-  type = string
-}
-
-variable "oci_tenancy_id" {
-  type = string
-}
-
 variable "talos_ccm_version" {
   default = "v1.9.1"
   type    = string
 }
 
 variable "talos_version" {
-  type = string
+  default = "v1.10.3"
+  type    = string
 }

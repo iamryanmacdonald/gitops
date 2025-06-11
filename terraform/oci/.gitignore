@@ -1,3 +1,4 @@
 config.s3.tfbackend
 
+.bitwarden/
 image/
