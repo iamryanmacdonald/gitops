@@ -6,6 +6,11 @@ variable "bitwarden_organization_id" {
   type = string
 }
 
+variable "cicd" {
+  default = false
+  type    = bool
+}
+
 variable "oci_ccm_version" {
   default = "v1.31.0"
   type    = string

@@ -99,6 +99,8 @@ resource "talos_machine_configuration_apply" "controlplane" {
 }
 
 resource "local_file" "controlplane-01" {
+  count = var.cicd ? 0 : 1
+
   content  = talos_machine_configuration_apply.controlplane.machine_configuration
   filename = "${path.module}/../../talos/controlplane-01.yaml"
 }

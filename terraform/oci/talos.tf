@@ -52,6 +52,8 @@ data "talos_machine_configuration" "controlplane" {
 }
 
 resource "local_file" "talconfig" {
+  count = var.cicd ? 0 : 1
+
   content  = data.talos_client_configuration.this.talos_config
   filename = "${path.module}/../../talos/talconfig"
 }
@@ -75,6 +77,8 @@ resource "talos_cluster_kubeconfig" "this" {
 }
 
 resource "local_file" "kubeconfig" {
+  count = var.cicd ? 0 : 1
+  
   content  = talos_cluster_kubeconfig.this.kubeconfig_raw
   filename = "${path.module}/../../talos/kubeconfig"
 }

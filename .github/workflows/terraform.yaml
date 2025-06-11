@@ -82,7 +82,8 @@ jobs:
           terraform plan \
             -input=false \
             -no-color \
-            -out .planfile
+            -out .planfile \
+            -var "cicd=true"
         working-directory: ${{ matrix.paths }}
       
       - name: Post PR comment
