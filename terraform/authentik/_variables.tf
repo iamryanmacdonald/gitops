@@ -5,3 +5,8 @@ variable "bitwarden_access_token" {
 variable "bitwarden_organization_id" {
   type = string
 }
+
+variable "cicd" {
+  default = false
+  type    = bool
+}
