@@ -18,6 +18,11 @@
       semanticCommitType: "ci",
     },
     {
+      commitMessageTopic: "release {{depName}}",
+      matchManagers: ["github-releases"],
+      semanticCommitScope: "github-release",
+    },
+    {
       commitMessageTopic: "chart {{depName}}",
       matchDatasources: ["helm"],
       semanticCommitScope: "helm",
