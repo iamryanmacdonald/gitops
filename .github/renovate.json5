@@ -8,6 +8,7 @@
     ":semanticCommits",
     ":timezone(Australia/Melbourne)",
     "github>iamryanmacdonald/gitops//.renovate/autoMerge.json5",
+    "github>iamryanmacdonald/gitops//.renovate/customManagers.json5",
     "github>iamryanmacdonald/gitops//.renovate/groups.json5",
     "github>iamryanmacdonald/gitops//.renovate/labels.json5",
     "github>iamryanmacdonald/gitops//.renovate/semanticCommits.json5",
