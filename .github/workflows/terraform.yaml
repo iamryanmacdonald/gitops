@@ -73,6 +73,10 @@ jobs:
           AWS_ACCESS_KEY_ID : ${{ vars.AWS_ACCESS_KEY_ID }}
           AWS_ENDPOINT_URL_S3 : ${{ vars.AWS_ENDPOINT_URL_S3 }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          TF_VAR_authentik_url: ${{ vars.AUTHENTIK_URL }}
+          TF_VAR_bitwarden_access_token: ${{ secrets.BITWARDEN_ACCESS_TOKEN }}
+          TF_VAR_bitwarden_organization_id: ${{ vars.BITWARDEN_ORGANIZATION_ID }}
+          TF_VAR_domains: ${{ vars.DOMAINS }}
         name: Terraform - plan
         run: |
           terraform plan \
