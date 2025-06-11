@@ -78,7 +78,7 @@ resource "talos_cluster_kubeconfig" "this" {
 
 resource "local_file" "kubeconfig" {
   count = var.cicd ? 0 : 1
-  
+
   content  = talos_cluster_kubeconfig.this.kubeconfig_raw
   filename = "${path.module}/../../talos/kubeconfig"
 }
