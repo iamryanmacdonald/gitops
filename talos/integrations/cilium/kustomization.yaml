@@ -10,6 +10,6 @@ helmCharts:
     releaseName: cilium
     repo: https://helm.cilium.io
     valuesFile: ../../../kubernetes/apps/base/kube-system/cilium/app/values.yaml
-    version: 1.17.4
+    version: 1.17.5
 transformers:
   - transformers.yaml
