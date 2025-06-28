@@ -11,7 +11,7 @@ instance:
     - source-controller
   distribution:
     # renovate: datasource=github-releases depName=controlplaneio-fluxcd/distribution
-    version: 2.6.2
+    version: 2.6.3
   sync:
     interval: 1h
     kind: GitRepository
