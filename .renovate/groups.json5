@@ -2,6 +2,18 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   packageRules: [
     {
+      description: "Actions Runner Group",
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      groupName: "Actions Runner",
+      matchDatasources: ["docker"],
+      matchPackageNames: [
+        "/gha-runner-scale-set/",
+        "/gha-runner-scale-set-controller/",
+      ],
+    },
+    {
       description: "Flux Operator Group",
       group: {
         commitMessageTopic: "{{{groupName}}} group",
