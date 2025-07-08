@@ -42,10 +42,10 @@ releases:
     namespace: flux-system
     needs: ['security/external-secrets']
     values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/clusters/{{ requiredEnv "CLUSTER" }}/flux-system/flux-operator/app/values.yaml']
-    version: 0.23.0
+    version: 0.24.0
   - chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
     name: flux-instance
     namespace: flux-system
     needs: ['flux-system/flux-operator']
     values: ['{{ requiredEnv "ROOT_DIR" }}/kubernetes/clusters/{{ requiredEnv "CLUSTER" }}/flux-system/flux-instance/app/values.yaml']
-    version: 0.23.0
+    version: 0.24.0
