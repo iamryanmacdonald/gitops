@@ -17,7 +17,7 @@ terraform {
     }
     oci = {
       source  = "oracle/oci"
-      version = "7.9.0"
+      version = "7.10.0"
     }
     talos = {
       source  = "siderolabs/talos"
