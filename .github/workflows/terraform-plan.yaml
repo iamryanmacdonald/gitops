@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      
+
       - id: changed-files
         name: Get changed files
         uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
@@ -19,8 +19,9 @@ jobs:
           dir_names: true
           dir_names_max_depth: 2
           files: terraform/**
+          files_ignore: terraform/_modules/**
           matrix: true
-      
+
       - name: List changed files
         run: echo ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
   plan:
@@ -36,17 +37,17 @@ jobs:
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
-      
+
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      
+
       - name: Terraform - Install
         uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
         with:
           terraform_wrapper: false
-      
+
       - continue-on-error: true
         name: Terraform - fmt
         run: |
@@ -55,24 +56,24 @@ jobs:
         working-directory: ${{ matrix.paths }}
 
       - env:
-          AWS_ACCESS_KEY_ID : ${{ vars.AWS_ACCESS_KEY_ID }}
-          AWS_ENDPOINT_URL_S3 : ${{ vars.AWS_ENDPOINT_URL_S3 }}
+          AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
+          AWS_ENDPOINT_URL_S3: ${{ vars.AWS_ENDPOINT_URL_S3 }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         name: Terraform - init
         run: |
           terraform init \
             -no-color
         working-directory: ${{ matrix.paths }}
-      
+
       - name: Terraform - validate
         run: |
           terraform validate \
             -no-color
         working-directory: ${{ matrix.paths }}
-      
+
       - env:
-          AWS_ACCESS_KEY_ID : ${{ vars.AWS_ACCESS_KEY_ID }}
-          AWS_ENDPOINT_URL_S3 : ${{ vars.AWS_ENDPOINT_URL_S3 }}
+          AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
+          AWS_ENDPOINT_URL_S3: ${{ vars.AWS_ENDPOINT_URL_S3 }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           TF_VAR_bitwarden_access_token: ${{ secrets.BITWARDEN_ACCESS_TOKEN }}
           TF_VAR_bitwarden_organization_id: ${{ vars.BITWARDEN_ORGANIZATION_ID }}
@@ -84,7 +85,7 @@ jobs:
             -out .planfile \
             -var "cicd=true"
         working-directory: ${{ matrix.paths }}
-      
+
       - name: Post PR comment
         uses: borchero/terraform-plan-comment@434458316f8f24dd073cd2561c436cce41dc8f34 # v2.4.1
         with:
