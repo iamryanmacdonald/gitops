@@ -1,4 +1,6 @@
 ---
+authentik:
+  log_level: debug
 global:
   envFrom:
     - secretRef:
@@ -14,7 +16,7 @@ server:
     main:
       enabled: true
       hostnames:
-        - 'sso.${CLUSTER_DOMAIN}'
+        - "sso.${CLUSTER_DOMAIN}"
       parentRefs:
         - name: external
           namespace: network
