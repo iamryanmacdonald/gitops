@@ -1,6 +1,4 @@
 ---
-authentik:
-  log_level: debug
 global:
   envFrom:
     - secretRef:
