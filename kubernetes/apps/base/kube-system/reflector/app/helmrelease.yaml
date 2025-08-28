@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: emberstack
-      version: 9.1.27
+      version: 9.1.28
   install:
     remediation:
       retries: -1
