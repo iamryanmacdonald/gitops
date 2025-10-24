@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: fluxcd-kustomize-mutating-webhook
         namespace: flux-system
-      version: 0.6.0
+      version: 0.7.0
   install:
     crds: CreateReplace
     remediation:
