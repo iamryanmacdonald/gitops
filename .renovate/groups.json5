@@ -14,16 +14,31 @@
       ],
     },
     {
+      description: "Cert-Manager Group",
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      groupName: "Cert-Manager",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/cert-manager/"],
+    },
+    {
+      description: "External Secrets Operator Group",
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      groupName: "External Secrets Operator",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/external-secrets/"],
+    },
+    {
       description: "Flux Operator Group",
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
       groupName: "Flux Operator",
       matchDatasources: ["docker"],
-      matchPackageNames: [
-        "/flux-instance/",
-        "/flux-operator/",
-      ],
-    }
-  ]
+      matchPackageNames: ["/flux-instance/", "/flux-operator/"],
+    },
+  ],
 }
