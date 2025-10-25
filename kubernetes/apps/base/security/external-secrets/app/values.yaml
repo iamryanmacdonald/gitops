@@ -3,7 +3,7 @@
 bitwarden-sdk-server:
   enabled: true
   podAnnotations:
-    secret.reloader.stakater.com: bitwarden,bitwarden-tls-certs
+    secret.reloader.stakater.com/reload: 'bitwarden,bitwarden-tls-certs'
 grafanaDashboard:
   enabled: true
 serviceMonitor:
