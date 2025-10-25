@@ -28,7 +28,7 @@
         commitMessageTopic: "{{{groupName}}} group",
       },
       groupName: "External Secrets Operator",
-      matchDatasources: ["docker"],
+      matchDatasources: ["docker", "helm"],
       matchPackageNames: ["/external-secrets/"],
     },
     {
