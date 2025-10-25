@@ -2,6 +2,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/external-secrets/external-secrets/refs/tags/v0.17.0/deploy/charts/external-secrets/values.schema.json
 bitwarden-sdk-server:
   enabled: true
+  podAnnotations:
+    secret.reloader.stakater.com: bitwarden,bitwarden-tls-certs
 grafanaDashboard:
   enabled: true
 serviceMonitor:
