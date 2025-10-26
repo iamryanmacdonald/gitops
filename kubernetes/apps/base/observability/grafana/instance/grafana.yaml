@@ -24,3 +24,16 @@ spec:
       role_attribute_path: contains(groups, 'Grafana - Admin') && 'Admin' || contains(groups, 'Grafana - Editor') && 'Editor' || 'Viewer'
       scopes: email openid profile
       token_url: '${CLUSTER_AUTH_URL}/application/o/token/'
+    date_formats:
+      use_browser_locale: 'true'
+    server:
+      root_url: 'https://grafana.${CLUSTER_DOMAIN}'
+  deployment:
+    spec:
+      template:
+        spec:
+          containers:
+            - envFrom:
+                - secretRef:
+                    name: grafana
+              name: grafana
