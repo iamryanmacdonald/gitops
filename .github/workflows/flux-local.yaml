@@ -33,13 +33,13 @@ jobs:
             --path /github/workspace/pull/kubernetes/clusters/${{ matrix.cluster }}
             --path-orig /github/workspace/default/kubernetes/clusters/${{ matrix.cluster }}
             --sources "flux-system"
-            --strip-attrs "chart,checksum/config,helm.sh/chart,kubernetes.io/version"
+            --strip-attrs "chart,checksum/config,helm.sh/chart,app.kubernetes.io/version"
             --unified 6
       
       - id: diff
         name: Generate Diff
         run: |
-          echo 'diff <<EOF' >> $GITHUB_OUTPUT
+          echo 'diff<<EOF' >> $GITHUB_OUTPUT
           cat diff.patch >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
       
