@@ -1,0 +1,26 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/grafana.integreatly.org/grafana_v1beta1.json
+apiVersion: grafana.integreatly.org/grafana_v1beta1.json
+kind: Grafana
+metadata:
+  labels:
+    grafana.internal/instance: grafana
+  name: grafana
+spec:
+  config:
+    auth:
+      oauth_auto_login: 'true'
+      signout_redirect_url: '${CLUSTER_AUTH_URL}/application/o/grafana/end-session/'
+    auth.anonymous:
+      enabled: 'true'
+      hide_version: 'true'
+      org_name: Main Org.
+      org_role: Viewer
+    auth.generic_oauth:
+      api_url: '${CLUSTER_AUTH_URL}/application/o/userinfo/'
+      auth_url: '${CLUSTER_AUTH_URL}/application/o/authorize/'
+      enabled: 'true'
+      name: authentik
+      role_attribute_path: contains(groups, 'Grafana - Admin') && 'Admin' || contains(groups, 'Grafana - Editor') && 'Editor' || 'Viewer'
+      scopes: email openid profile
+      token_url: '${CLUSTER_AUTH_URL}/application/o/token/'
