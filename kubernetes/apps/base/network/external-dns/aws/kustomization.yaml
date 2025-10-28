@@ -10,4 +10,5 @@ configurations:
   - kustomizeconfig.yaml
 resources:
   - externalsecret.yaml
+  - grafanadashboard.yaml
   - helmrelease.yaml

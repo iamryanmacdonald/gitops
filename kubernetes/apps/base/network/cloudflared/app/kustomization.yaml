@@ -12,4 +12,5 @@ configurations:
 namespace: network
 resources:
   - dnsendpoint.yaml
+  - grafanadashboard.yaml
   - helmrelease.yaml
