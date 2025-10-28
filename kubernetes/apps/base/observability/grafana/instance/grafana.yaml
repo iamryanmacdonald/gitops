@@ -8,6 +8,11 @@ metadata:
   name: grafana
 spec:
   config:
+    analytics:
+      check_for_plugin_updates: 'false'
+      check_for_updates: 'false'
+      feedback_links_enbaled: 'false'
+      reporting_enabled: 'false'
     auth:
       oauth_auto_login: 'true'
       signout_redirect_url: '${CLUSTER_AUTH_URL}/application/o/grafana/end-session/'
@@ -26,7 +31,12 @@ spec:
       token_url: '${CLUSTER_AUTH_URL}/application/o/token/'
     date_formats:
       use_browser_locale: 'true'
+    log:
+      mode: console
+    plugins:
+      plugin_admin_enabled: 'false'
     server:
+      enable_gzip: 'true'
       root_url: 'https://grafana.${CLUSTER_DOMAIN}'
   deployment:
     spec:
