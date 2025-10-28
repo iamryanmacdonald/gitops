@@ -9,4 +9,5 @@ configMapGenerator:
 configurations:
   - kustomizeconfig.yaml
 resources:
+  - externalsecret.yaml
   - helmrelease.yaml

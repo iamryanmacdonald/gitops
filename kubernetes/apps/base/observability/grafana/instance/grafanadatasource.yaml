@@ -1,0 +1,33 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/grafana.integreatly.org/grafanadatasource_v1beta1.json
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: alertmanager
+spec:
+  datasource:
+    access: proxy
+    name: Alertmanager
+    type: alertmanager
+    uid: alertmanager
+    url: http://kube-prometheus-stack-alertmanager.observability.svc.cluster.local:9093/
+  instanceSelector:
+    matchLabels:
+      grafana.internal/instance: grafana
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/grafana.integreatly.org/grafanadatasource_v1beta1.json
+apiVersion: v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: prometheus
+spec:
+  datasource:
+    access: proxy
+    isDefault: true
+    name: Prometheus
+    type: prometheus
+    uid: prometheus
+    url: http://kube-prometheus-stack-prometheus.observability.svc.cluster.local:9090/
+  instanceSelector:
+    matchLabels:
+      grafana.internal/instance: grafana
