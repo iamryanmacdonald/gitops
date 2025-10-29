@@ -6,4 +6,4 @@ components:
   - ../../../components/common
 namespace: flux-system
 resources:
-  - addons/ks.yaml
+  - addons.yaml

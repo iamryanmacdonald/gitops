@@ -6,5 +6,5 @@ components:
   - ../../../components/common
 namespace: observability
 resources:
-  - grafana/ks.yaml
-  - kube-prometheus-stack/ks.yaml
+  - grafana.yaml
+  - kube-prometheus-stack.yaml
