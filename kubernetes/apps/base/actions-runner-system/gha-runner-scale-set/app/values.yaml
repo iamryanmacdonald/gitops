@@ -11,7 +11,7 @@ containerMode:
 controllerServiceAccount:
   name: gha-runner-scale-set-controller
   namespace: actions-runner-system
-githubConfigUrl: https://github.com/iamryanmacdonald
+githubConfigUrl: https://github.com/iamryanmacdonald/life
 githubConfigSecret: gha-runner-scale-set
 maxRunners: 2
 minRunners: 1
