@@ -15,3 +15,11 @@ githubConfigUrl: https://github.com/iamryanmacdonald/${REPO:-gitops}
 githubConfigSecret: gha-runner-scale-set
 maxRunners: 2
 minRunners: 1
+template:
+  spec:
+    containers:
+      - command: ["/home/runner/run.sh"]
+        image: ghcr.io/actions/actions-runner:latest
+        name: runner
+    securityContext:
+      fsGroup: 123
