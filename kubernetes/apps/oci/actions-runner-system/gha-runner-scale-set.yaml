@@ -13,6 +13,7 @@ spec:
   postBuild:
     substitute:
       REPO: gitops
+      SCALE_SET_NAME: self-hosted-gitops
   prune: true
   retryInterval: 2m
   sourceRef:

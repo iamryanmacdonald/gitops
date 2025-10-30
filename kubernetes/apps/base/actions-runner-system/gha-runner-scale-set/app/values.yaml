@@ -15,7 +15,7 @@ githubConfigUrl: https://github.com/iamryanmacdonald/${REPO:-gitops}
 githubConfigSecret: gha-runner-scale-set
 maxRunners: 2
 minRunners: 1
-runnerScaleSetName: self-hosted
+runnerScaleSetName: ${SCALE_SET_NAME:-self-hosted}
 template:
   spec:
     containers:
