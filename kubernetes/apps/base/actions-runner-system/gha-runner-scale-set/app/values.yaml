@@ -5,7 +5,7 @@ containerMode:
       - ReadWriteOnce
     resources:
       requests:
-        storage: 1Gi
+        storage: 10Gi
     storageClassName: local-hostpath
   type: kubernetes
 controllerServiceAccount:
