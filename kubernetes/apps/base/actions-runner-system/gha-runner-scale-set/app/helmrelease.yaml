@@ -35,4 +35,4 @@ spec:
       retries: 3
   valuesFrom:
     - kind: ConfigMap
-      name: gha-runner-scale-set-values
+      name: gha-runner-scale-set-values-${REPO:-gitops}
