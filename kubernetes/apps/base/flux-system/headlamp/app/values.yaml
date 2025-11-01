@@ -7,4 +7,21 @@ config:
       name: headlamp
     secret:
       create: false
+  pluginsDir: /build/plugins
 fullnameOverride: headlamp
+initContainers:
+  - command:
+      - /bin/sh
+      - -c
+      - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/ && chown -R 100:101 /build
+    image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:0.5.0
+    name: headlamp-plugins
+    volumeMounts:
+      - mountPath: /build/plugins
+        name: headlamp-plugins
+volumeMounts:
+  - mountPath: /build/plugins
+    name: headlamp-plugins
+volumes:
+  - emptyDir: {}
+    name: headlamp-plugins
