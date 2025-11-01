@@ -14,7 +14,7 @@ initContainers:
       - /bin/sh
       - -c
       - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/ && chown -R 100:101 /build
-    image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:0.5.0
+    image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:0.4.0
     name: headlamp-plugins
     volumeMounts:
       - mountPath: /build/plugins
