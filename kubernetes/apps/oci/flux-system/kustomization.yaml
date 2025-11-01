@@ -7,3 +7,4 @@ components:
 namespace: flux-system
 resources:
   - addons.yaml
+  - headlamp.yaml
