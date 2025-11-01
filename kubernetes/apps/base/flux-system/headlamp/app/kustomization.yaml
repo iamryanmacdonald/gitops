@@ -9,6 +9,7 @@ configMapGenerator:
 configurations:
   - kustomizeconfig.yaml
 resources:
+  - clusterrolebinding.yaml
   - externalsecret.yaml
   - helmrelease.yaml
   - httproute.yaml
