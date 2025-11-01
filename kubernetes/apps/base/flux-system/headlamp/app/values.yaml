@@ -1,0 +1,8 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kubernetes-sigs/headlamp/refs/heads/main/charts/headlamp/values.schema.json
+config:
+  oidc:
+    secret:
+      create: true
+      name: headlamp-oidc
+fullnameOverride: headlamp
