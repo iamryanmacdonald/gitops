@@ -35,7 +35,7 @@ spec:
                   name: cloudflared-token
             image:
               repository: docker.io/cloudflare/cloudflared
-              tag: 2025.10.1
+              tag: 2025.11.1
             probes:
               liveness: &probe
                 custom: true
