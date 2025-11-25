@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: tailscale
         namespace: flux-system
-      version: 1.90.6
+      version: 1.90.9
   install:
     remediation:
       retries: -1
